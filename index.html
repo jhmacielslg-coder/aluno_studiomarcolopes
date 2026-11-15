@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<html class="dark" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>App do Aluno | Studio Marco Lopes Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap"
+    rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0e0e0e" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Studio Marco Lopes | App do Aluno IA</title>
+
+  <!-- Google Fonts: Inter, Montserrat & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#131313",
+            "surface-dim": "#131313",
+            "surface-bright": "#3a3939",
+            "surface-container-lowest": "#0e0e0e",
+            "surface-container-low": "#1c1b1b",
+            "surface-container": "#201f1f",
+            "surface-container-high": "#2a2a2a",
+            "surface-container-highest": "#353534",
+            "on-surface": "#e5e2e1",
+            "on-surface-variant": "#e6bdb9",
+            "primary": "#ffb3ad",
+            "primary-container": "#d91e2a",
+            "on-primary-container": "#fff0ee",
+            "secondary": "#c7c6c6",
+            "secondary-container": "#484949",
+            "tertiary": "#ffb3b0",
+            "tertiary-container": "#dc1130",
+            "outline": "#ad8885",
+            "outline-variant": "#5c3f3d"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Montserrat", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg-app: #0A0A0A;
+      --bg-surface: #141414;
+      --bg-card: #1C1C1C;
+      --primary: #E50914;
+      --primary-glow: rgba(229, 9, 20, 0.4);
+      --success: #39FF14;
+      --text-main: #FFFFFF;
+      --text-muted: #9CA3AF;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-red: rgba(229, 9, 20, 0.3);
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      body {
+        background: #000000;
+        color: var(--text-main);
+
+        html,
+        body {
+          width: 100%;
+          height: 100%;
+          background-color: #050505;
+          color: #e5e2e1;
+          font-family: 'Inter', sans-serif;
+          display: flex;
+          justify-content: center;
+          min-height: 100vh;
+          overflow-x: hidden;
+        }
+
+        /* Contêiner Mobile do App */
+        .app-viewport {
+          width: 100%;
+          max-width: 480px;
+          background: var(--bg-app);
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          border-left: 1px solid var(--border);
+          border-right: 1px solid var(--border);
+          box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+          padding-bottom: 85px;
+
+          /* Espaço pro menu inferior */
+          .pb-safe {
+            padding-bottom: max(env(safe-area-inset-bottom, 16px), 16px);
+          }
+
+          /* Top Bar */
+          .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .pt-safe {
+              padding-top: max(env(safe-area-inset-top, 0px), 0px);
+            }
+
+            .brand-info h1 {
+              font-family: 'Montserrat', sans-serif;
+              font-size: 16px;
+              font-weight: 900;
+              color: #FFF;
+              letter-spacing: -0.5px;
+
+              /* Esconder barras de rolagem mantendo o scroll ativo */
+              ::-webkit-scrollbar {
+                display: none;
+              }
+
+              .brand-info h1 span {
+                color: var(--primary);
+              }
+
+              .brand-info small {
+                font-size: 11px;
+                color: var(--text-muted);
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+
+                .no-scrollbar {
+                  -ms-overflow-style: none;
+                  scrollbar-width: none;
+                }
+
+                .user-badge {
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  background: var(--bg-card);
+                  padding: 6px 12px;
+                  border-radius: 999px;
+                  border: 1px solid var(--border);
+                  font-size: 12px;
+                  font-weight: 600;
+
+                  .glow-red {
+                    box-shadow: 0 0 20px rgba(217, 30, 42, 0.45);
+                  }
+
+                  .user-avatar {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background: var(--primary);
+                    display: grid;
+                    place-items: center;
+                    font-size: 11px;
+                    font-weight: 800;
+
+                    .glow-red-lg {
+                      box-shadow: 0 0 32px rgba(217, 30, 42, 0.65);
+                    }
+
+                    /* Conteúdo das Abas */
+                    .tab-content {
+
+                      /* Transições suaves de tabs */
+                      .tab-pane {
+                        display: none;
+                        padding: 20px;
+                        animation: fadeIn 0.2s ease;
+                        animation: fadeInTab 0.25s ease-out forwards;
+                      }
+
+                      .tab-content.active {
+                        display: block;
+                      }
+
+                      @keyframes fadeIn {
+                        .tab-pane.active {
+                          display: flex;
+                        }
+
+                        @keyframes fadeInTab {
+                          from {
+                            opacity: 0;
+                            transform: translateY(6px);
+                          }
+
+                          to {
+                            opacity: 1;
+                            transform: translateY(0);
+                          }
+                        }
+  </style>
+</head>
+
+<body class="bg-[#050505] flex justify-center items-start min-h-screen">
+
+  /* Cabeçalhos de Seção */
+  .section-header {
+  margin-bottom: 20px;
+  }
+  .section-header h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #FFFFFF;
+  }
+  .section-header p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  }
+  <!-- FRAME DO APLICATIVO (Layout Mobile PWA com centralização Desktop) -->
+  <div
+    class="w-full max-w-[440px] min-h-screen bg-surface flex flex-col relative shadow-[0_0_60px_rgba(0,0,0,0.9)] border-x border-white/5">
+
+    /* Seletor de Fichas (A/B/C) */
+    .ficha-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    }
+    .ficha-btn {
+    flex: 1;
+    min-width: 90px;
+    padding: 10px 14px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-muted);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    }
+    .ficha-btn.active {
+    background: var(--primary);
+    color: #FFF;
+    border-color: var(--primary);
+    box-shadow: 0 4px 15px var(--primary-glow);
+    }
+    <!-- =========================================================================
+         HEADER PRINCIPAL DO APP (FIXO NO TOPO)
+         ========================================================================= -->
+    <header
+      class="sticky top-0 inset-x-0 z-50 bg-surface-container-lowest/90 backdrop-blur-xl border-b border-white/5 pt-safe">
+      <div class="h-16 px-4 flex items-center justify-between">
+        <!-- Logo e Status IA -->
+        <div class="flex items-center gap-3">
+          <a href="#" onclick="switchTab('inicio'); return false;" class="flex items-center gap-2">
+            <img src="image/logo.png" alt="Studio Marco Lopes"
+              class="h-8 w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(217,30,42,0.4)]" />
+          </a>
+          <div
+            class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high/80 border border-white/5">
+            <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse shadow-[0_0_8px_#d91e2a]"></span>
+            <span class="font-display font-bold text-[10px] text-primary tracking-wider uppercase">IA Online</span>
+          </div>
+        </div>
+
+        /* Card do Treino */
+        .exercicio-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.2s;
+        }
+        .exercicio-card.concluido {
+        border-color: rgba(57, 255, 20, 0.4);
+        background: rgba(57, 255, 20, 0.04);
+        }
+        .exercicio-info h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 4px;
+        }
+        .exercicio-detalhes {
+        font-size: 12.5px;
+        color: var(--text-muted);
+        display: flex;
+        gap: 12px;
+        }
+        .exercicio-detalhes span b {
+        color: var(--text-main);
+        }
+        .check-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        border: 1.5px solid var(--border);
+        background: var(--bg-card);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        font-size: 16px;
+        color: transparent;
+        transition: all 0.2s;
+        flex-shrink: 0;
+        }
+        .exercicio-card.concluido .check-btn {
+        background: var(--success);
+        border-color: var(--success);
+        color: #000;
+        font-weight: 800;
+        }
+        <!-- Ações do Topo: Notificações & Perfil do Aluno -->
+        <div class="flex items-center gap-2">
+          <!-- Botão WhatsApp Treinador -->
+          <a href="https://wa.me/5561998196191?text=Ol%C3%A1%2C%20Marco!%20Estou%20no%20App%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20meu%20treino."
+            target="_blank"
+            class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-green-400 hover:text-white hover:bg-green-600/20 transition-all border border-white/5"
+            title="Falar com Marco Lopes">
+            <span class="material-symbols-outlined text-[20px]">chat</span>
+          </a>
+
+          /* Barra de Progresso */
+          .progresso-box {
+          background: var(--bg-surface);
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          padding: 14px 16px;
+          margin-bottom: 20px;
+          }
+          .progresso-header {
+          display: flex;
+          justify-content: space-between;
+          font-size: 12.5px;
+          font-weight: 600;
+          color: var(--text-muted);
+          margin-bottom: 8px;
+          }
+          .progresso-header b { color: #FFF; }
+          .progresso-bar {
+          height: 8px;
+          background: #262626;
+          border-radius: 999px;
+          overflow: hidden;
+          }
+          .progresso-fill {
+          height: 100%;
+          width: 0%;
+          background: linear-gradient(90deg, var(--primary) 0%, var(--success) 100%);
+          transition: width 0.3s ease;
+          }
+          <!-- Notificações -->
+          <button type="button"
+            onclick="alert('Notificações IA:\n1. Carga do Supino ajustada para 85kg hoje.\n2. Lembre-se de beber 3L de água!')"
+            class="relative w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-secondary hover:text-white transition-colors border border-white/5"
+            aria-label="Notificações">
+            <span class="material-symbols-outlined text-[20px]">notifications</span>
+            <span
+              class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary-container shadow-[0_0_6px_#d91e2a]"></span>
+          </button>
+
+          /* Timer de Descanso */
+          .timer-card {
+          background: linear-gradient(135deg, #1C1214 0%, #121212 100%);
+          border: 1px solid var(--border-red);
+          border-radius: 14px;
+          padding: 16px;
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          }
+          .timer-info b { display: block; font-size: 13px; color: #FFF; }
+          .timer-info span { font-size: 11.5px; color: var(--text-muted); }
+          .timer-display {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 26px;
+          font-weight: 900;
+          color: var(--primary);
+          letter-spacing: 1px;
+          }
+          .timer-btn {
+          background: var(--primary);
+          color: #FFF;
+          border: none;
+          padding: 8px 14px;
+          border-radius: 8px;
+          font-size: 12px;
+          font-weight: 700;
+          font-family: 'Montserrat', sans-serif;
+          cursor: pointer;
+          }
+          <!-- Avatar Carlos -->
+          <div class="relative cursor-pointer" onclick="switchTab('progresso')">
+            <img src="image/marco.png" alt="Aluno Carlos"
+              class="w-8 h-8 rounded-full object-cover border border-primary-container/60 shadow-[0_0_8px_rgba(217,30,42,0.3)]" />
+            <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-green-500 border border-surface"></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    /* Seção Dietas & Cardápio */
+    .meta-agua-card {
+    background: linear-gradient(135deg, #0e2038 0%, #121212 100%);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    .meta-agua-info h3 { font-size: 15px; color: #60A5FA; font-family: 'Montserrat', sans-serif; margin-bottom: 4px; }
+    .meta-agua-info p { font-size: 12px; color: #93C5FD; }
+    .btn-agua {
+    background: #2563EB;
+    color: #FFF;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    }
+    <!-- =========================================================================
+         CORPO PRINCIPAL (CONTAINER DAS 5 TELAS/ABAS)
+         ========================================================================= -->
+    <main class="flex-1 flex flex-col pb-24">
+
+      .refeicao-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 14px;
+      }
+      .refeicao-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      }
+      .refeicao-tag {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      background: rgba(229, 9, 20, 0.1);
+      padding: 4px 8px;
+      border-radius: 6px;
+      }
+      .refeicao-hora { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+      .refeicao-titulo { font-size: 16px; font-weight: 700; color: #FFF; margin-bottom: 6px; font-family: 'Montserrat',
+      sans-serif; }
+      .refeicao-itens { list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; color:
+      #D1D5DB; }
+      .refeicao-itens li::before { content: "• "; color: var(--primary); font-weight: bold; }
+      <!-- =======================================================================
+           SESSÃO 1: INÍCIO (DASHBOARD PRINCIPAL DO ALUNO)
+           ======================================================================= -->
+      <section id="tab-inicio" class="tab-pane active flex-col w-full px-4 pt-3 space-y-5">
+        <!-- Boas-vindas e Foco -->
+        <div class="flex items-center justify-between pt-1">
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="font-display font-extrabold text-2xl text-white tracking-tight">Olá, Carlos!</h1>
+              <span
+                class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-white text-[11px] font-semibold border border-white/5">
+                <span
+                  class="w-1.5 h-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#d91e2a] animate-pulse"></span>
+                Plano IA Ativo
+              </span>
+            </div>
+            <p class="font-display text-xs text-primary font-bold uppercase tracking-wider mt-0.5">
+              Foco: Hipertrofia &amp; Definição
+            </p>
+          </div>
+          <div
+            class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary-container border border-white/5 shadow-inner">
+            <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+          </div>
+        </div>
+
+        /* Seção Evolução */
+        .metricas-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
+        }
+        .metrica-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px;
+        text-align: center;
+        }
+        .metrica-card small { font-size: 11.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing:
+        0.5px; font-weight: 600; }
+        .metrica-card b { display: block; font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900;
+        color: #FFF; margin: 4px 0; }
+        .metrica-card span { font-size: 12px; color: var(--success); font-weight: 600; }
+        <div class="flex items-center gap-2 text-secondary text-xs -mt-2">
+          <span class="material-symbols-outlined text-[15px] text-primary">calendar_today</span>
+          <span>Hoje • Treino B (Superior &amp; Peitoral)</span>
+        </div>
+
+        .cargas-box {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px;
+        margin-bottom: 20px;
+        }
+        .cargas-box h3 { font-family: 'Montserrat', sans-serif; font-size: 15px; margin-bottom: 12px; color: #FFF; }
+        .carga-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 13.5px;
+        }
+        .carga-row:last-child { border-bottom: none; }
+        .carga-row span { color: var(--text-muted); }
+        .carga-row b { color: var(--primary); font-family: 'Montserrat', sans-serif; }
+        <!-- CARD RITMO DE PERFORMANCE COM MEDIDOR CIRCULAR SVG -->
+        <div
+          class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-surface-container-high via-surface-container to-surface-container-lowest p-5 border border-primary-container/20 shadow-xl">
+          <div
+            class="absolute -right-10 -top-10 w-44 h-44 bg-primary-container/20 rounded-full blur-3xl pointer-events-none">
+          </div>
+
+          /* Seção Treinador */
+          .treinador-card {
+          background: linear-gradient(145deg, #1A1213 0%, #121212 100%);
+          border: 1px solid var(--border-red);
+          border-radius: 16px;
+          padding: 24px;
+          text-align: center;
+          margin-bottom: 20px;
+          }
+          .treinador-avatar {
+          width: 72px;
+          height: 72px;
+          border-radius: 50%;
+          background: #222;
+          border: 2px solid var(--primary);
+          margin: 0 auto 12px;
+          display: grid;
+          place-items: center;
+          font-size: 32px;
+          }
+          .treinador-card h3 { font-family: 'Montserrat', sans-serif; font-size: 19px; color: #FFF; }
+          .treinador-card small { color: var(--primary); font-weight: 700; font-size: 12px; letter-spacing: 1px;
+          text-transform: uppercase; }
+          .treinador-card p { font-size: 13px; color: var(--text-muted); margin: 12px 0 18px; line-height: 1.5; }
+          .btn-zap-treinador {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: 100%;
+          background: #25D366;
+          color: #000;
+          font-weight: 800;
+          padding: 14px;
+          border-radius: 10px;
+          text-decoration: none;
+          font-family: 'Montserrat', sans-serif;
+          font-size: 14px;
+          text-transform: uppercase;
+          }
+          <div class="relative z-10 flex flex-col space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold tracking-widest text-secondary font-display">Metas
+                  Diárias</span>
+                <h2 class="font-display font-bold text-lg text-white">Ritmo de Performance</h2>
+              </div>
+              <span
+                class="px-2.5 py-0.5 rounded-full bg-primary-container/20 border border-primary-container/40 text-primary font-display font-bold text-xs">
+                Nível 4 Pro
+              </span>
+            </div>
+
+            /* Menu de Navegação Inferior (Bottom Bar) */
+            .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 6px;
+            z-index: 100;
+            }
+            .nav-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+            padding: 4px 0;
+            transition: all 0.2s;
+            }
+            .nav-btn .icon { font-size: 20px; }
+            .nav-btn.active {
+            color: var(--primary);
+            }
+            .nav-btn.active .icon {
+            filter: drop-shadow(0 0 8px var(--primary-glow));
+            }
+            </style>
+            </head>
+
+            <body>
+              <!-- Gráfico Circular + Telemetria -->
+              <div class="grid grid-cols-12 gap-3 items-center pt-1">
+                <!-- Gauge SVG -->
+                <div class="col-span-5 flex flex-col items-center justify-center relative">
+                  <div class="relative w-28 h-28 flex items-center justify-center">
+                    <svg class="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" fill="transparent" r="40" stroke="#262626" stroke-width="8"></circle>
+                      <circle cx="50" cy="50" fill="transparent" r="40" stroke="#d91e2a" stroke-dasharray="251.2"
+                        stroke-dashoffset="62.8" stroke-linecap="round" stroke-width="8.5"
+                        class="drop-shadow-[0_0_8px_rgba(217,30,42,0.8)]"></circle>
+                    </svg>
+                    <div class="absolute flex flex-col items-center justify-center text-center">
+                      <span class="font-display font-extrabold text-2xl text-white leading-none">75%</span>
+                      <span
+                        class="text-[9px] uppercase tracking-wider text-secondary font-semibold mt-1">Concluído</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="app-viewport">
+                  <!-- Lista de Telemetria -->
+                  <div class="col-span-7 flex flex-col space-y-2 pl-1">
+                    <div
+                      class="flex items-center justify-between p-2 rounded-xl bg-surface-container-low/80 border border-white/5">
+                      <div class="flex items-center gap-2">
+                        <span
+                          class="material-symbols-outlined text-primary-container text-[18px]">local_fire_department</span>
+                        <span class="text-xs text-secondary font-medium">Calorias</span>
+                      </div>
+                      <span class="font-display text-xs text-white font-bold">1.850 <span
+                          class="text-[10px] text-secondary font-normal">/ 2.4k</span></span>
+                    </div>
+
+                    <!-- Top Bar -->
+                    <div class="top-bar">
+                      <div class="brand-info">
+                        <h1>STUDIO <span>MARCO LOPES</span></h1>
+                        <small>App Exclusivo do Aluno</small>
+                      </div>
+                      <div class="user-badge">
+                        <div class="user-avatar">A</div>
+                        <span>Aluno Demo</span>
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center justify-between p-2 rounded-xl bg-surface-container-low/80 border border-white/5">
+                      <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-[18px]">water_drop</span>
+                        <span class="text-xs text-secondary font-medium">Hidratação</span>
+                      </div>
+                      <span class="font-display text-xs text-white font-bold">2.2L <span
+                          class="text-[10px] text-secondary font-normal">/ 3.0L</span></span>
+                    </div>
+
+                    <!-- ========================================== -->
+                    <!-- ABA 1: MEU TREINO                          -->
+                    <!-- ========================================== -->
+                    <div class="tab-content active" id="tab-treinos">
+                      <div class="section-header">
+                        <h2>Ficha de Treino</h2>
+                        <p>Acompanhamento de séries e cargas personalizadas.</p>
+                      </div>
+                      <div
+                        class="flex items-center justify-between p-2 rounded-xl bg-surface-container-low/80 border border-white/5">
+                        <div class="flex items-center gap-2">
+                          <span
+                            class="material-symbols-outlined text-primary-container text-[18px]">fitness_center</span>
+                          <span class="text-xs text-secondary font-medium">Treino B</span>
+                        </div>
+                        <span
+                          class="font-display text-[10px] text-primary-container uppercase font-extrabold tracking-wider bg-primary-container/10 px-2 py-0.5 rounded">Pendente</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Seletor de Ficha -->
+                  <div class="ficha-selector">
+                    <button class="ficha-btn active" onclick="selecionarFicha('A')">TREINO A (Peito/Tríceps)</button>
+                    <button class="ficha-btn" onclick="selecionarFicha('B')">TREINO B (Costas/Bíceps)</button>
+                    <button class="ficha-btn" onclick="selecionarFicha('C')">TREINO C (Pernas)</button>
+                  </div>
+                  <!-- Botão Iniciar Treino do Dia -->
+                  <button type="button" onclick="switchTab('treino-ativo')"
+                    class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#ff3344] via-primary-container to-[#b3141f] text-white font-display font-extrabold text-sm uppercase tracking-wider shadow-[0_4px_24px_rgba(217,30,42,0.45)] hover:shadow-[0_6px_30px_rgba(217,30,42,0.65)] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                    <span>Iniciar Treino do Dia</span>
+                    <span class="material-symbols-outlined text-[20px]"
+                      style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Barra de Progresso do Treino -->
+              <div class="progresso-box">
+                <div class="progresso-header">
+                  <span>Progresso da Sessão</span>
+                  <b id="progresso-texto">0 de 4 concluídos (0%)</b>
+                  <!-- STREAK DE 5 DIAS & CALENDÁRIO SEMANAL -->
+                  <div
+                    class="flex flex-col space-y-3 rounded-2xl bg-surface-container p-4 border border-white/5 shadow-md">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary-container text-[22px]"
+                          style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                        <span class="font-display font-bold text-sm text-white">Fogo de 5 Dias Seguidos</span>
+                      </div>
+                      <span class="text-xs text-primary font-display font-bold">Recorde: 12</span>
+                    </div>
+
+                    <!-- Dias da Semana -->
+                    <div class="grid grid-cols-7 gap-1.5 text-center">
+                      <div
+                        class="flex flex-col items-center p-2 rounded-xl bg-surface-container-high/60 border border-white/5">
+                        <span class="text-[10px] text-secondary font-bold">SEG</span>
+                        <span class="material-symbols-outlined text-[18px] text-green-400 mt-1">check_circle</span>
+                      </div>
+                      <div
+                        class="flex flex-col items-center p-2 rounded-xl bg-surface-container-high/60 border border-white/5">
+                        <span class="text-[10px] text-secondary font-bold">TER</span>
+                        <span class="material-symbols-outlined text-[18px] text-green-400 mt-1">check_circle</span>
+                      </div>
+                      <div
+                        class="flex flex-col items-center p-2 rounded-xl bg-surface-container-high/60 border border-white/5">
+                        <span class="text-[10px] text-secondary font-bold">QUA</span>
+                        <span class="material-symbols-outlined text-[18px] text-green-400 mt-1">check_circle</span>
+                      </div>
+                      <div
+                        class="flex flex-col items-center p-2 rounded-xl bg-primary-container text-white shadow-[0_0_12px_rgba(217,30,42,0.5)]">
+                        <span class="text-[10px] font-extrabold uppercase">QUI</span>
+                        <span class="material-symbols-outlined text-[18px] mt-1"
+                          style="font-variation-settings: 'FILL' 1;">bolt</span>
+                      </div>
+                      <div
+                        class="flex flex-col items-center p-2 rounded-xl bg-surface-container-low border border-white/5">
+                        <span class="text-[10px] text-secondary font-bold">SEX</span>
+                        <span class="w-2 h-2 rounded-full bg-white/20 mt-3 mb-1"></span>
+                      </div>
+                      <div
+                        class="flex flex-col items-center p-2 rounded-xl bg-surface-container-low border border-white/5 opacity-60">
+                        <span class="text-[10px] text-secondary font-bold">SÁB</span>
+                        <span class="w-2 h-2 rounded-full bg-white/10 mt-3 mb-1"></span>
+                      </div>
+                      <div
+                        class="flex flex-col items-center p-2 rounded-xl bg-surface-container-low border border-white/5 opacity-60">
+                        <span class="text-[10px] text-secondary font-bold">DOM</span>
+                        <span class="w-2 h-2 rounded-full bg-white/10 mt-3 mb-1"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="progresso-bar">
+                    <div class="progresso-fill" id="progresso-fill"></div>
+
+                    <!-- COACH IA MARCO LOPES BANNER -->
+                    <div
+                      class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-surface-container-high via-surface-container to-surface-container-lowest p-4 border border-white/5 shadow-xl">
+                      <div class="flex items-start gap-3.5">
+                        <!-- Avatar Real Marco Lopes -->
+                        <div class="relative flex-shrink-0">
+                          <div
+                            class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-lowest border-2 border-primary-container p-0.5 shadow-[0_0_12px_rgba(217,30,42,0.5)]">
+                            <img src="image/marco.png" alt="Marco Lopes Personal"
+                              class="w-full h-full rounded-full object-cover" />
+                          </div>
+                          <span
+                            class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-primary-container shadow-[0_0_6px_#d91e2a]"></span>
+                        </div>
+
+                        <!-- Conteúdo do Treinador -->
+                        <div class="flex flex-col space-y-1.5 flex-1 min-w-0">
+                          <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-1.5">
+                              <span class="font-display font-bold text-sm text-white">Marco Lopes Personal</span>
+                              <span
+                                class="px-1.5 py-0.2 rounded bg-primary-container text-white text-[9px] font-black uppercase">IA</span>
+                            </div>
+                            <span class="text-secondary text-[10px]">Há 12 min</span>
+                          </div>
+                          <p class="text-xs text-secondary leading-snug">
+                            “Com base na sobrecarga de ontem, aumentei +15s de intervalo no Treino B para preservar suas
+                            articulações e focar em pico de contração no Supino.”
+                          </p>
+                          <div class="pt-1 flex items-center gap-2">
+                            <a href="https://wa.me/5561998196191?text=Ol%C3%A1%2C%20Marco!%20Recebi%20seu%20feedback%20no%20app%20e%20gostaria%20de%20conversar."
+                              target="_blank"
+                              class="px-3 py-1 rounded-full bg-surface-bright text-white text-[11px] font-semibold hover:bg-surface-variant transition-colors flex items-center gap-1">
+                              <span class="material-symbols-outlined text-[14px]">chat</span>
+                              <span>Tirar Dúvida</span>
+                            </a>
+                            <button type="button" onclick="switchTab('configurar-ia')"
+                              class="text-primary text-[11px] font-semibold flex items-center gap-0.5 hover:underline">
+                              <span class="material-symbols-outlined text-[14px]">tune</span>
+                              <span>Reconfigurar Plano</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      </section>
+
+      <!-- Timer de Descanso -->
+      <div class="timer-card">
+        <div class="timer-info">
+          <b>Timer de Descanso</b>
+          <span>Intervalo entre séries</span>
+          <!-- =======================================================================
+           SESSÃO 2: MEU PLANO (ROTEIRO SEMANAL & NUTRIÇÃO GERADO PELA IA)
+           ======================================================================= -->
+          <section id="tab-meu-plano" class="tab-pane flex-col w-full px-4 pt-3 space-y-5">
+            <!-- Header do Plano -->
+            <div class="flex flex-col gap-1">
+              <div
+                class="inline-flex items-center gap-1.5 self-start px-3 py-1 rounded-full bg-primary-container/15 border border-primary-container/30 text-primary text-[10px] font-display font-extrabold uppercase tracking-wider">
+                <span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                Plano 100% Personalizado por IA
+              </div>
+              <h1 class="font-display font-extrabold text-xl text-white tracking-tight mt-1">
+                Roteiro Semanal: Força &amp; Definição
+              </h1>
+              <div class="flex flex-wrap items-center gap-2 mt-1">
+                <span
+                  class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-secondary text-xs font-medium border border-white/5">
+                  <span class="material-symbols-outlined text-[15px] text-primary">calendar_today</span>
+                  8 Semanas
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-secondary text-xs font-medium border border-white/5">
+                  <span class="material-symbols-outlined text-[15px] text-primary">speed</span>
+                  Intermediário
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-secondary text-xs font-medium border border-white/5">
+                  <span class="material-symbols-outlined text-[15px] text-primary">local_fire_department</span>
+                  2.350 kcal/dia
+                </span>
+              </div>
+            </div>
+            <div class="timer-display" id="timer-val">01:00</div>
+            <button class="timer-btn" onclick="iniciarTimer(60)">Iniciar 60s</button>
+        </div>
+
+        <!-- Lista de Exercícios -->
+        <div id="lista-exercicios">
+          <div class="exercicio-card" onclick="toggleExercicio(this)">
+            <div class="exercicio-info">
+              <h3>1. Supino Reto com Barra</h3>
+              <div class="exercicio-detalhes">
+                <span>Séries: <b>4x10</b></span>
+                <span>Carga: <b>32 kg / lado</b></span>
+                <span>Descanso: <b>60s</b></span>
+                <!-- Régua de Intensidade Semanal -->
+                <div class="p-3.5 rounded-xl bg-surface-container border border-white/5 flex flex-col gap-2 shadow-md">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="flex items-center gap-1.5 text-white font-bold font-display">
+                      <span class="material-symbols-outlined text-[16px] text-primary-container">bolt</span>
+                      Intensidade Semanal
+                    </span>
+                    <span class="text-primary font-bold text-[11px] uppercase tracking-wider">8/10 • Recuperação
+                      Otimizada</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden flex">
+                    <div
+                      class="h-full bg-gradient-to-r from-primary-container via-tertiary-container to-primary rounded-full"
+                      style="width: 80%;"></div>
+                  </div>
+                  <div class="flex items-center justify-between text-secondary text-[11px]">
+                    <span>Fase de Carga Progressiva</span>
+                    <span>Descanso metabólico: 60s a 90s</span>
+                  </div>
+                </div>
+
+                <!-- Seletor Interativo dos Dias da Semana -->
+                <div class="flex flex-col gap-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-display font-bold text-sm text-white">Programação Semanal</span>
+                    <span class="text-secondary text-xs">Semana 1 de 8</span>
+                  </div>
+                  <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar" id="plan-day-selector">
+                    <button
+                      class="day-tab flex flex-col items-center justify-center min-w-[54px] py-2 px-2 rounded-xl bg-primary-container text-white shadow-[0_0_12px_rgba(217,30,42,0.45)]">
+                      <span class="text-[9px] uppercase font-bold opacity-90">Hoje</span>
+                      <span class="font-display font-extrabold text-sm">Seg</span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-white mt-1"></span>
+                    </button>
+                    <button
+                      class="day-tab flex flex-col items-center justify-center min-w-[54px] py-2 px-2 rounded-xl bg-surface-container text-secondary hover:text-white border border-white/5">
+                      <span class="text-[9px] uppercase font-bold text-secondary">Dia 2</span>
+                      <span class="font-display font-bold text-sm text-white">Ter</span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary-container/40 mt-1"></span>
+                    </button>
+                    <button
+                      class="day-tab flex flex-col items-center justify-center min-w-[54px] py-2 px-2 rounded-xl bg-surface-container text-secondary hover:text-white border border-white/5">
+                      <span class="text-[9px] uppercase font-bold text-secondary">Dia 3</span>
+                      <span class="font-display font-bold text-sm text-white">Qua</span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-surface-container-high mt-1"></span>
+                    </button>
+                    <button
+                      class="day-tab flex flex-col items-center justify-center min-w-[54px] py-2 px-2 rounded-xl bg-surface-container text-secondary hover:text-white border border-white/5">
+                      <span class="text-[9px] uppercase font-bold text-secondary">Dia 4</span>
+                      <span class="font-display font-bold text-sm text-white">Qui</span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary-container/40 mt-1"></span>
+                    </button>
+                    <button
+                      class="day-tab flex flex-col items-center justify-center min-w-[54px] py-2 px-2 rounded-xl bg-surface-container text-secondary hover:text-white border border-white/5">
+                      <span class="text-[9px] uppercase font-bold text-secondary">Dia 5</span>
+                      <span class="font-display font-bold text-sm text-white">Sex</span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary-container/40 mt-1"></span>
+                    </button>
+                    <button
+                      class="day-tab flex flex-col items-center justify-center min-w-[54px] py-2 px-2 rounded-xl bg-surface-container text-secondary hover:text-white border border-white/5 opacity-60">
+                      <span class="text-[9px] uppercase font-bold text-secondary">Off</span>
+                      <span class="font-display font-bold text-sm text-white">Sáb</span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-surface-container-high mt-1"></span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- CARD DO TREINO DO DIA COM EXERCÍCIOS -->
+                <div class="rounded-2xl bg-surface-container p-4 border border-white/5 flex flex-col gap-4 shadow-lg">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="w-9 h-9 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary-container">
+                        <span class="material-symbols-outlined text-[20px]">fitness_center</span>
+                      </div>
+                      <div>
+                        <span class="text-[10px] text-primary uppercase font-bold font-display tracking-wider">Treino de
+                          Hoje</span>
+                        <h2 class="font-display font-bold text-base text-white">Força Superior &amp; Peitoral</h2>
+                      </div>
+                    </div>
+                    <span
+                      class="px-2 py-0.5 rounded-full bg-primary-container text-white text-[10px] font-extrabold uppercase tracking-wider shadow-[0_0_8px_rgba(217,30,42,0.4)]">
+                      Ativo
+                    </span>
+                  </div>
+                  <div class="check-btn">✓</div>
+
+                  <!-- Thumbnail Visual -->
+                  <div class="relative w-full h-36 rounded-xl overflow-hidden bg-surface-container-high">
+                    <img src="image/screen.png" alt="Supino com Barra" class="w-full h-full object-cover" />
+                    <div
+                      class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent">
+                    </div>
+                    <div class="absolute bottom-2.5 left-3 right-3 flex items-center gap-2">
+                      <span
+                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container-lowest/85 backdrop-blur-md text-white text-[10px] font-semibold">
+                        <span class="material-symbols-outlined text-[13px] text-primary">timer</span> 45 min
+                      </span>
+                      <span
+                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container-lowest/85 backdrop-blur-md text-white text-[10px] font-semibold">
+                        <span class="material-symbols-outlined text-[13px] text-primary">local_fire_department</span>
+                        420 kcal
+                      </span>
+                      <span
+                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container-lowest/85 backdrop-blur-md text-white text-[10px] font-semibold">
+                        <span class="material-symbols-outlined text-[13px] text-primary">format_list_bulleted</span> 4
+                        Exercícios
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Lista de Exercícios -->
+                  <div class="space-y-2">
+                    <div
+                      class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low border border-white/5">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="w-6 h-6 rounded-md bg-surface-container-high flex items-center justify-center text-primary font-display font-bold text-xs">1</span>
+                        <div>
+                          <p class="text-xs text-white font-bold">Supino Reto com Barra</p>
+                          <p class="text-[11px] text-secondary">4 séries × 8-10 reps • Carga progressiva</p>
+                        </div>
+                      </div>
+                      <span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+                    </div>
+
+                    <div
+                      class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low border border-white/5">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="w-6 h-6 rounded-md bg-surface-container-high flex items-center justify-center text-primary font-display font-bold text-xs">2</span>
+                        <div>
+                          <p class="text-xs text-white font-bold">Supino Inclinado com Halteres</p>
+                          <p class="text-[11px] text-secondary">4 séries × 10 reps • Pausa 60s</p>
+                        </div>
+                      </div>
+                      <span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+                    </div>
+
+                    <div
+                      class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low border border-white/5">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="w-6 h-6 rounded-md bg-surface-container-high flex items-center justify-center text-primary font-display font-bold text-xs">3</span>
+                        <div>
+                          <p class="text-xs text-white font-bold">Crossover no Cabo Polia Média</p>
+                          <p class="text-[11px] text-secondary">3 séries × 12 reps • Pico de contração</p>
+                        </div>
+                      </div>
+                      <span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+                    </div>
+
+                    <div
+                      class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low border border-white/5">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="w-6 h-6 rounded-md bg-surface-container-high flex items-center justify-center text-primary font-display font-bold text-xs">4</span>
+                        <div>
+                          <p class="text-xs text-white font-bold">Tríceps Corda no Pulley</p>
+                          <p class="text-[11px] text-secondary">3 séries × 15 reps • Drop-set final</p>
+                        </div>
+                      </div>
+                      <span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+                    </div>
+                  </div>
+
+                  <!-- Botão Iniciar Treino -->
+                  <button type="button" onclick="switchTab('treino-ativo')"
+                    class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-primary-container to-tertiary-container text-white font-display font-bold text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(217,30,42,0.4)] hover:brightness-110 active:scale-95 transition-all">
+                    <span class="material-symbols-outlined text-[18px]">play_circle</span>
+                    <span>Iniciar Sessão Agora</span>
+                  </button>
+                </div>
+
+                <div class="exercicio-card" onclick="toggleExercicio(this)">
+                  <div class="exercicio-info">
+                    <h3>2. Supino Inclinado com Halteres</h3>
+                    <div class="exercicio-detalhes">
+                      <span>Séries: <b>3x12</b></span>
+                      <span>Carga: <b>22 kg / halter</b></span>
+                      <span>Descanso: <b>60s</b></span>
+                      <!-- NUTRIÇÃO & REFEIÇÕES IA -->
+                      <div
+                        class="rounded-2xl bg-surface-container p-4 border border-white/5 flex flex-col gap-3 shadow-lg">
+                        <div class="flex items-center justify-between">
+                          <div class="flex items-center gap-2">
+                            <div
+                              class="w-8 h-8 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary-container">
+                              <span class="material-symbols-outlined text-[18px]">restaurant</span>
+                            </div>
+                            <div>
+                              <span
+                                class="text-[10px] text-primary uppercase font-bold font-display tracking-wider">Nutrição
+                                Preditiva IA</span>
+                              <h3 class="font-display font-bold text-sm text-white">Meta Calórica: 2.350 kcal</h3>
+                            </div>
+                          </div>
+                          <span class="text-xs text-secondary font-display font-bold">Hoje</span>
+                        </div>
+                        <div class="check-btn">✓</div>
+
+                        <!-- Macronutrientes -->
+                        <div class="grid grid-cols-3 gap-2 pt-1 text-center">
+                          <div class="p-2 rounded-lg bg-surface-container-high/80 border border-white/5">
+                            <span class="text-[10px] text-secondary uppercase font-bold">Proteínas</span>
+                            <p class="font-display font-extrabold text-sm text-white mt-0.5">170g</p>
+                            <span class="text-[9px] text-primary font-semibold">29% total</span>
+                          </div>
+                          <div class="p-2 rounded-lg bg-surface-container-high/80 border border-white/5">
+                            <span class="text-[10px] text-secondary uppercase font-bold">Carbos</span>
+                            <p class="font-display font-extrabold text-sm text-white mt-0.5">220g</p>
+                            <span class="text-[9px] text-secondary font-semibold">46% total</span>
+                          </div>
+                          <div class="p-2 rounded-lg bg-surface-container-high/80 border border-white/5">
+                            <span class="text-[10px] text-secondary uppercase font-bold">Gorduras</span>
+                            <p class="font-display font-extrabold text-sm text-white mt-0.5">65g</p>
+                            <span class="text-[9px] text-secondary font-semibold">25% total</span>
+                          </div>
+                        </div>
+                      </div>
+                      </section>
+
+                      <div class="exercicio-card" onclick="toggleExercicio(this)">
+                        <div class="exercicio-info">
+                          <h3>3. Desenvolvimento com Halteres</h3>
+                          <div class="exercicio-detalhes">
+                            <span>Séries: <b>4x10</b></span>
+                            <span>Carga: <b>16 kg / halter</b></span>
+                            <span>Descanso: <b>60s</b></span>
+                            <!-- =======================================================================
+           SESSÃO 3: TREINO ATIVO EM EXECUÇÃO (COM TIMER DE DESCANSO INTERATIVO)
+           ======================================================================= -->
+                            <section id="tab-treino-ativo" class="tab-pane flex-col w-full px-4 pt-3 space-y-5">
+                              <!-- Topo da Sessão Ativa -->
+                              <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                  <span class="relative flex h-2.5 w-2.5">
+                                    <span
+                                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+                                    <span
+                                      class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-container"></span>
+                                  </span>
+                                  <span
+                                    class="text-[11px] font-display font-extrabold text-primary uppercase tracking-widest">Sessão
+                                    Ativa • IA Conectada</span>
+                                </div>
+                                <div
+                                  class="flex items-center gap-1.5 bg-surface-container-high px-2.5 py-1 rounded-full text-secondary text-xs border border-white/5">
+                                  <span
+                                    class="material-symbols-outlined text-[14px] text-primary">local_fire_department</span>
+                                  <span class="font-display font-bold text-white">185 kcal</span>
+                                </div>
+                              </div>
+
+                              <div class="flex items-end justify-between -mt-2">
+                                <div>
+                                  <h1 class="font-display font-extrabold text-xl text-white">Supino Reto com Barra</h1>
+                                  <p class="text-xs text-secondary">Peitoral Maior • Força Pura • Bloco A</p>
+                                </div>
+                                <div
+                                  class="flex items-center gap-1 bg-surface-container-low px-2.5 py-1 rounded-lg border border-white/5">
+                                  <span class="material-symbols-outlined text-[15px] text-secondary">schedule</span>
+                                  <span class="font-display font-bold text-xs text-white"
+                                    id="workout-elapsed-time">18:42</span>
+                                </div>
+                              </div>
+
+                              <!-- Card Visual do Exercício & Feedback Biomecânico -->
+                              <div
+                                class="relative w-full h-44 rounded-2xl overflow-hidden shadow-xl bg-surface-container-low border border-white/5">
+                                <img src="image/screen.png" alt="Supino com Barra" class="w-full h-full object-cover" />
+                                <div
+                                  class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/50 to-transparent">
+                                </div>
+
+                                <!-- Badges Superiores -->
+                                <div class="absolute top-2.5 inset-x-2.5 flex items-center justify-between">
+                                  <span
+                                    class="bg-surface-container-lowest/80 backdrop-blur-md px-2.5 py-0.5 rounded-full text-white text-[10px] font-display font-bold uppercase tracking-wider border border-white/10">
+                                    Exercício 1 de 6
+                                  </span>
+                                  <span
+                                    class="bg-primary-container px-2.5 py-0.5 rounded-full text-white text-[10px] font-display font-black uppercase tracking-wider shadow-md">
+                                    Recorde: 94 kg
+                                  </span>
+                                </div>
+
+                                <!-- Feedback Biomecânico -->
+                                <div class="absolute bottom-2.5 inset-x-2.5">
+                                  <div
+                                    class="flex items-start gap-2 bg-surface-container-high/90 backdrop-blur-md p-2 rounded-xl border border-white/10 shadow-lg">
+                                    <div
+                                      class="w-6 h-6 rounded-md bg-surface-container-highest flex items-center justify-center shrink-0">
+                                      <span class="material-symbols-outlined text-primary text-[16px]">neurology</span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                      <div class="flex items-center justify-between">
+                                        <span class="text-[10px] font-display font-bold text-primary uppercase">Dica
+                                          Biomecânica Marco</span>
+                                        <span class="text-[9px] text-secondary font-semibold">Cadência 3:0:1</span>
+                                      </div>
+                                      <p class="text-[11px] text-white leading-tight mt-0.5">Retraia as escápulas no
+                                        banco e mantenha os cotovelos a 75° do tronco.</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="check-btn">✓</div>
+                              </div>
+
+                              <div class="exercicio-card" onclick="toggleExercicio(this)">
+                                <div class="exercicio-info">
+                                  <h3>4. Tríceps Corda na Polia</h3>
+                                  <div class="exercicio-detalhes">
+                                    <span>Séries: <b>3x15</b></span>
+                                    <span>Carga: <b>25 kg</b></span>
+                                    <span>Descanso: <b>45s</b></span>
+                                    <!-- CRONÔMETRO CIRCULAR DE DESCANSO ATIVO INTERATIVO -->
+                                    <div
+                                      class="flex flex-col items-center justify-center py-2 relative bg-surface-container rounded-2xl border border-white/5 p-4 shadow-xl">
+                                      <div
+                                        class="absolute w-44 h-44 rounded-full bg-primary-container/15 blur-3xl pointer-events-none">
+                                      </div>
+
+                                      <div class="relative w-48 h-48 flex items-center justify-center">
+                                        <!-- SVG Progress Ring -->
+                                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
+                                          <circle cx="100" cy="100" fill="none" r="80" stroke="#262626"
+                                            stroke-width="10"></circle>
+                                          <circle id="timer-svg-circle" cx="100" cy="100" fill="none" r="80"
+                                            stroke="url(#timerGrad)" stroke-width="10" stroke-linecap="round"
+                                            stroke-dasharray="502.65" stroke-dashoffset="150"
+                                            class="transition-all duration-1000 ease-linear"></circle>
+                                          <defs>
+                                            <linearGradient id="timerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                              <stop offset="0%" stop-color="#ffb3ad"></stop>
+                                              <stop offset="60%" stop-color="#d91e2a"></stop>
+                                              <stop offset="100%" stop-color="#dc1130"></stop>
+                                            </linearGradient>
+                                          </defs>
+                                        </svg>
+
+                                        <!-- Display Central do Tempo -->
+                                        <div
+                                          class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                                          <span
+                                            class="text-[10px] font-display font-bold uppercase tracking-widest text-secondary mb-0.5">Descanso
+                                            Ativo</span>
+                                          <span id="timer-text"
+                                            class="font-display font-black text-4xl text-white tracking-tight drop-shadow-md">00:45</span>
+                                          <div
+                                            class="flex items-center gap-1 mt-1 bg-surface-container-low px-2 py-0.5 rounded-full border border-white/5">
+                                            <span
+                                              class="material-symbols-outlined text-[12px] text-primary">favorite</span>
+                                            <span class="text-[10px] text-white font-bold font-display">124 BPM</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="check-btn">✓</div>
+
+                                      <!-- Controles do Cronômetro -->
+                                      <div class="flex items-center justify-center gap-5 mt-3 z-10">
+                                        <button type="button" onclick="adjustTimer(-15)"
+                                          class="w-10 h-10 rounded-full bg-surface-container-low flex flex-col items-center justify-center text-secondary hover:text-white active:scale-90 transition-all border border-white/5"
+                                          title="-15 segundos">
+                                          <span class="material-symbols-outlined text-[18px]">replay_10</span>
+                                          <span class="text-[8px] font-bold -mt-1">-15s</span>
+                                        </button>
+
+                                        <!-- Play/Pause -->
+                                        <button type="button" id="timer-toggle-btn" onclick="toggleTimer()"
+                                          class="w-14 h-14 rounded-full bg-gradient-to-br from-primary via-primary-container to-tertiary-container text-white flex items-center justify-center shadow-lg shadow-primary-container/40 active:scale-95 transition-transform"
+                                          title="Pausar ou Iniciar Descanso">
+                                          <span id="timer-toggle-icon" class="material-symbols-outlined text-[28px]"
+                                            style="font-variation-settings: 'FILL' 1;">pause</span>
+                                        </button>
+
+                                        <button type="button" onclick="adjustTimer(15)"
+                                          class="w-10 h-10 rounded-full bg-surface-container-low flex flex-col items-center justify-center text-secondary hover:text-white active:scale-90 transition-all border border-white/5"
+                                          title="+15 segundos">
+                                          <span class="material-symbols-outlined text-[18px]">forward_10</span>
+                                          <span class="text-[8px] font-bold -mt-1">+15s</span>
+                                        </button>
+                                      </div>
+
+                                      <button type="button" onclick="skipTimer()"
+                                        class="mt-2.5 px-3 py-1 rounded-full text-secondary hover:text-white text-xs font-semibold flex items-center gap-1 transition-colors active:scale-95">
+                                        <span>Pular Descanso</span>
+                                        <span class="material-symbols-outlined text-[15px]">skip_next</span>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <!-- ========================================== -->
+                                <!-- ABA 2: DIETAS & CARDÁPIO                   -->
+                                <!-- ========================================== -->
+                                <div class="tab-content" id="tab-nutricao">
+                                  <div class="section-header">
+                                    <h2>Nutrição & Cardápio</h2>
+                                    <p>Sugestões alimentares para potencializar o treino.</p>
+                                  </div>
+                                  <!-- CHECKLIST INTERATIVO DE SÉRIES -->
+                                  <div class="flex flex-col space-y-2.5">
+                                    <div class="flex items-center justify-between px-1">
+                                      <div class="flex items-center gap-2">
+                                        <h2 class="font-display font-bold text-sm text-white">Checklist de Séries</h2>
+                                        <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                                      </div>
+                                      <span class="text-xs text-secondary font-medium">
+                                        Concluídas: <strong id="completed-sets-count"
+                                          class="text-white font-bold">2</strong> de 4
+                                      </span>
+                                    </div>
+
+                                    <!-- Meta de Hidratação -->
+                                    <div class="meta-agua-card">
+                                      <div class="meta-agua-info">
+                                        <h3>💧 Hidratação Diária</h3>
+                                        <p><span id="agua-atual">1.500</span> ml de 3.000 ml recomendados</p>
+                                        <!-- Série 1 -->
+                                        <div
+                                          class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low border border-white/5">
+                                          <div class="flex items-center gap-3">
+                                            <div
+                                              class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-white shadow-sm">
+                                              <span class="material-symbols-outlined text-[16px] font-bold">check</span>
+                                            </div>
+                                            <div>
+                                              <span class="font-display font-bold text-xs text-white">Série 1</span>
+                                              <span class="text-xs text-secondary ml-1 font-medium">12 reps • 80
+                                                kg</span>
+                                            </div>
+                                          </div>
+                                          <span
+                                            class="text-[10px] text-secondary font-display font-bold bg-surface-container px-2 py-0.5 rounded">RPE
+                                            7.5</span>
+                                        </div>
+
+                                        <!-- Série 2 -->
+                                        <div
+                                          class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low border border-white/5">
+                                          <div class="flex items-center gap-3">
+                                            <div
+                                              class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-white shadow-sm">
+                                              <span class="material-symbols-outlined text-[16px] font-bold">check</span>
+                                            </div>
+                                            <div>
+                                              <span class="font-display font-bold text-xs text-white">Série 2</span>
+                                              <span class="text-xs text-secondary ml-1 font-medium">10 reps • 85
+                                                kg</span>
+                                            </div>
+                                          </div>
+                                          <span
+                                            class="text-[10px] text-secondary font-display font-bold bg-surface-container px-2 py-0.5 rounded">RPE
+                                            8.0</span>
+                                        </div>
+
+                                        <!-- Série 3 (Atual) -->
+                                        <div
+                                          class="flex items-center justify-between p-3 rounded-xl bg-surface-container border border-primary-container/40 shadow-sm"
+                                          id="set-row-3">
+                                          <div class="flex items-center gap-3">
+                                            <button type="button" onclick="completeSet(3)"
+                                              class="w-7 h-7 rounded-lg border-2 border-primary-container bg-primary-container/10 flex items-center justify-center text-primary hover:bg-primary-container hover:text-white transition-all">
+                                              <span class="material-symbols-outlined text-[16px]">fitness_center</span>
+                                            </button>
+                                            <div>
+                                              <span class="font-display font-bold text-xs text-white">Série 3
+                                                (Próxima)</span>
+                                              <span class="text-xs text-primary font-bold ml-1">8 reps • 90 kg</span>
+                                            </div>
+                                          </div>
+                                          <button type="button" onclick="completeSet(3)"
+                                            class="px-2.5 py-1 rounded-md bg-primary-container text-white text-[10px] font-display font-extrabold uppercase tracking-wider">
+                                            Concluir
+                                          </button>
+                                        </div>
+
+                                        <!-- Série 4 -->
+                                        <div
+                                          class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low border border-white/5 opacity-70"
+                                          id="set-row-4">
+                                          <div class="flex items-center gap-3">
+                                            <div
+                                              class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+                                              <span class="text-xs font-bold font-display">4</span>
+                                            </div>
+                                            <div>
+                                              <span class="font-display font-bold text-xs text-white">Série 4</span>
+                                              <span class="text-xs text-secondary ml-1 font-medium">6 reps • 94 kg
+                                                (Recorde)</span>
+                                            </div>
+                                          </div>
+                                          <span class="text-[10px] text-secondary font-display font-bold">RPE 9.5</span>
+                                        </div>
+                                      </div>
+                                      <button class="btn-agua" onclick="adicionarAgua()">+ 250ml</button>
+                                    </div>
+
+                                    <!-- Refeição 1: Pré-Treino -->
+                                    <div class="refeicao-card">
+                                      <div class="refeicao-header">
+                                        <span class="refeicao-tag">Pré-Treino</span>
+                                        <span class="refeicao-hora">45 a 60 min antes</span>
+                                        <!-- Botão Finalizar Treino -->
+                                        <button type="button" onclick="finishWorkoutModal()"
+                                          class="w-full py-3.5 px-4 rounded-xl bg-surface-container-high hover:bg-primary-container text-white font-display font-extrabold text-xs uppercase tracking-wider transition-all border border-white/5 flex items-center justify-center gap-2">
+                                          <span class="material-symbols-outlined text-[18px]">verified</span>
+                                          <span>Finalizar Sessão de Treino</span>
+                                        </button>
+                            </section>
+
+                            <!-- =======================================================================
+           SESSÃO 4: EVOLUÇÃO & PROGRESSO (MÉTRICAS & GRÁFICOS)
+           ======================================================================= -->
+                            <section id="tab-progresso" class="tab-pane flex-col w-full px-4 pt-3 space-y-5">
+                              <!-- Header -->
+                              <div class="flex items-center justify-between">
+                                <div>
+                                  <h1 class="font-display font-extrabold text-xl text-white tracking-tight uppercase">
+                                    Evolução &amp; Métricas</h1>
+                                  <p class="text-xs text-secondary">Orientado pela biometria do Studio Marco Lopes</p>
+                                </div>
+                                <button type="button"
+                                  onclick="alert('Histórico de Pesagens exportado para o Marco Lopes Personal!')"
+                                  class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container border border-white/5"
+                                  title="Histórico de Pesagens">
+                                  <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                                </button>
+                              </div>
+                              <div class="refeicao-titulo">Energia & Força Muscular</div>
+                              <ul class="refeicao-itens">
+                                <li>1 xícara de café puro (sem açúcar)</li>
+                                <li>1 banana média amassada com 2 colheres de aveia em flocos</li>
+                                <li>1 colher rasa de mel ou canela a gosto</li>
+                              </ul>
+                          </div>
+
+                          <!-- Refeição 2: Pós-Treino -->
+                          <div class="refeicao-card">
+                            <div class="refeicao-header">
+                              <span class="refeicao-tag"
+                                style="color: #39FF14; background: rgba(57,255,20,0.1);">Pós-Treino</span>
+                              <span class="refeicao-hora">Até 40 min após</span>
+                              <!-- Filtros de Período -->
+                              <div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+                                <button type="button"
+                                  class="px-3.5 py-1.5 rounded-full text-xs font-display font-medium bg-surface-container text-secondary hover:text-white border border-white/5">
+                                  7 Dias
+                                </button>
+                                <button type="button"
+                                  class="px-3.5 py-1.5 rounded-full text-xs font-display font-bold bg-primary-container text-white shadow-[0_0_12px_rgba(217,30,42,0.45)]">
+                                  30 Dias
+                                </button>
+                                <button type="button"
+                                  class="px-3.5 py-1.5 rounded-full text-xs font-display font-medium bg-surface-container text-secondary hover:text-white border border-white/5">
+                                  3 Meses
+                                </button>
+                                <button type="button"
+                                  class="px-3.5 py-1.5 rounded-full text-xs font-display font-medium bg-surface-container text-secondary hover:text-white border border-white/5">
+                                  Ano
+                                </button>
+                              </div>
+                              <div class="refeicao-titulo">Recuperação Articular & Muscular</div>
+                              <ul class="refeicao-itens">
+                                <li>1 dose de Whey Protein (ou 3 ovos mexidos com azeite)</li>
+                                <li>1 fruta média (maçã, mamão ou pera)</li>
+                                <li>500ml de água mineral fresca</li>
+                              </ul>
+                            </div>
+
+                            <!-- Refeição 3: Almoço Equilibrado -->
+                            <div class="refeicao-card">
+                              <div class="refeicao-header">
+                                <span class="refeicao-tag">Almoço Nutritivo</span>
+                                <span class="refeicao-hora">12:00 - 13:00</span>
+                                <!-- GRÁFICO DE EVOLUÇÃO PONDERAL VETORIAL SVG -->
+                                <div
+                                  class="bg-surface-container-low rounded-2xl p-4 border border-white/5 shadow-md relative overflow-hidden">
+                                  <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center gap-2">
+                                      <span
+                                        class="w-2.5 h-2.5 rounded-full bg-primary-container shadow-[0_0_8px_rgba(217,30,42,0.8)]"></span>
+                                      <span
+                                        class="font-display font-bold text-xs text-white uppercase tracking-wider">Curva
+                                        de Peso Corporal</span>
+                                    </div>
+                                    <div
+                                      class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded-full border border-white/5">
+                                      <span class="material-symbols-outlined text-primary text-[14px]">psychology</span>
+                                      <span class="text-[10px] text-primary font-bold font-display">IA Preditiva</span>
+                                    </div>
+                                  </div>
+
+                                  <div class="flex items-baseline justify-between mb-3">
+                                    <div>
+                                      <span class="font-display font-extrabold text-3xl text-white">81.4</span>
+                                      <span class="text-xs text-secondary font-bold ml-0.5">kg</span>
+                                    </div>
+                                    <div class="text-right">
+                                      <span class="text-[9px] text-secondary uppercase font-bold block">Meta Próx.
+                                        Mês</span>
+                                      <span class="font-display font-bold text-sm text-primary">79.0 kg</span>
+                                    </div>
+                                  </div>
+
+                                  <!-- SVG Graphic -->
+                                  <div class="relative w-full h-36">
+                                    <svg class="w-full h-full overflow-visible" fill="none" viewBox="0 0 340 140">
+                                      <defs>
+                                        <linearGradient id="chartGlow" x1="0" y1="0" x2="0" y2="1">
+                                          <stop offset="0%" stop-color="#D91E2A" stop-opacity="0.45"></stop>
+                                          <stop offset="100%" stop-color="#D91E2A" stop-opacity="0.0"></stop>
+                                        </linearGradient>
+                                      </defs>
+                                      <line stroke="#353534" stroke-dasharray="3 3" stroke-width="0.8" x1="0" y1="20"
+                                        x2="340" y2="20"></line>
+                                      <line stroke="#353534" stroke-dasharray="3 3" stroke-width="0.8" x1="0" y1="65"
+                                        x2="340" y2="65"></line>
+                                      <line stroke="#353534" stroke-dasharray="3 3" stroke-width="0.8" x1="0" y1="110"
+                                        x2="340" y2="110"></line>
+                                      <path d="M 20 25 L 95 50 L 170 75 L 245 95 L 245 135 L 20 135 Z"
+                                        fill="url(#chartGlow)"></path>
+                                      <path d="M 20 25 L 95 50 L 170 75 L 245 95" stroke="#D91E2A"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"></path>
+                                      <path d="M 245 95 L 320 120" stroke="#FFB3AD" stroke-dasharray="4 4"
+                                        stroke-linecap="round" stroke-width="2.5"></path>
+                                      <circle cx="20" cy="25" fill="#FFFFFF" r="4.5" stroke="#D91E2A"
+                                        stroke-width="2.5"></circle>
+                                      <circle cx="95" cy="50" fill="#FFFFFF" r="4" stroke="#D91E2A" stroke-width="2.5">
+                                      </circle>
+                                      <circle cx="170" cy="75" fill="#FFFFFF" r="4" stroke="#D91E2A" stroke-width="2.5">
+                                      </circle>
+                                      <circle cx="245" cy="95" fill="#D91E2A" r="5.5" stroke="#FFFFFF"
+                                        stroke-width="2.5"></circle>
+                                      <circle cx="320" cy="120" fill="#353534" r="4.5" stroke="#FFB3AD"
+                                        stroke-dasharray="2 2" stroke-width="2"></circle>
+                                      <text fill="#C7C6C6" font-family="Montserrat" font-size="9" font-weight="600"
+                                        text-anchor="middle" x="20" y="16">84.0k</text>
+                                      <text fill="#C7C6C6" font-family="Montserrat" font-size="9" font-weight="600"
+                                        text-anchor="middle" x="95" y="42">83.1k</text>
+                                      <text fill="#C7C6C6" font-family="Montserrat" font-size="9" font-weight="600"
+                                        text-anchor="middle" x="170" y="67">82.2k</text>
+                                      <text fill="#FFFFFF" font-family="Montserrat" font-size="10" font-weight="700"
+                                        text-anchor="middle" x="245" y="86">81.4k</text>
+                                      <text fill="#FFB3AD" font-family="Montserrat" font-size="9" font-weight="600"
+                                        text-anchor="middle" x="320" y="112">79.0k*</text>
+                                    </svg>
+                                  </div>
+
+                                  <div
+                                    class="grid grid-cols-5 text-center mt-2 pt-2 bg-surface-container rounded-lg px-2 text-[10px]">
+                                    <span class="text-secondary font-bold">Sem 1</span>
+                                    <span class="text-secondary font-bold">Sem 2</span>
+                                    <span class="text-secondary font-bold">Sem 3</span>
+                                    <span class="text-primary font-bold">Sem 4</span>
+                                    <span class="text-white font-bold">Meta IA</span>
+                                  </div>
+                                </div>
+                                <div class="refeicao-titulo">Construção & Saciedade</div>
+                                <ul class="refeicao-itens">
+                                  <li>150g de peito de frango grelhado ou carne magra</li>
+                                  <li>4 colheres de arroz integral ou purê de batata-doce</li>
+                                  <li>1 concha de feijão preto ou carioca</li>
+                                  <li>Prato generoso de salada de folhas verdes à vontade</li>
+                                </ul>
+                              </div>
+
+                              <!-- Dica do Marco -->
+                              <div
+                                style="background: rgba(229,9,20,0.08); border-left: 3px solid var(--primary); padding: 14px; border-radius: 0 10px 10px 0; font-size: 13px; color: #E5E7EB;">
+                                <b>💡 Dica do Marco Lopes:</b> "Consistência alimentar vence dieta radical. Coma comida
+                                de verdade, priorize proteínas e não pule refeições antes do treino."
+                              </div>
+                            </div>
+                            <!-- Grid 2x2 de Métricas -->
+                            <div class="grid grid-cols-2 gap-3">
+                              <div
+                                class="bg-surface-container rounded-xl p-3.5 flex flex-col justify-between border border-white/5">
+                                <div class="flex items-center justify-between">
+                                  <span class="text-[10px] uppercase text-secondary font-bold font-display">Peso
+                                    Atual</span>
+                                  <span class="material-symbols-outlined text-[16px] text-primary">scale</span>
+                                </div>
+                                <div class="my-1.5">
+                                  <span class="font-display font-extrabold text-xl text-white">81.4</span>
+                                  <span class="text-xs text-secondary">kg</span>
+                                </div>
+                                <span class="text-[10px] text-green-400 font-bold flex items-center gap-0.5">
+                                  <span class="material-symbols-outlined text-[12px]">trending_down</span> -2.6 kg no
+                                  ciclo
+                                </span>
+                              </div>
+
+                              <!-- ========================================== -->
+                              <!-- ABA 3: EVOLUÇÃO                             -->
+                              <!-- ========================================== -->
+                              <div class="tab-content" id="tab-evolucao">
+                                <div class="section-header">
+                                  <h2>Minha Evolução</h2>
+                                  <p>Acompanhamento de peso, medidas e recordes de carga.</p>
+                                </div>
+                                <div
+                                  class="bg-surface-container rounded-xl p-3.5 flex flex-col justify-between border border-white/5">
+                                  <div class="flex items-center justify-between">
+                                    <span
+                                      class="text-[10px] uppercase text-secondary font-bold font-display">Treinos</span>
+                                    <span
+                                      class="material-symbols-outlined text-[16px] text-primary-container">fitness_center</span>
+                                  </div>
+                                  <div class="my-1.5">
+                                    <span class="font-display font-extrabold text-xl text-white">18</span>
+                                    <span class="text-xs text-secondary">/ 20</span>
+                                  </div>
+                                  <div class="w-full bg-surface-container-lowest rounded-full h-1.5 overflow-hidden">
+                                    <div class="bg-primary-container h-full rounded-full" style="width: 90%;"></div>
+                                  </div>
+                                </div>
+
+                                <!-- Cards de Métricas -->
+                                <div class="metricas-grid">
+                                  <div class="metrica-card">
+                                    <small>Peso Atual</small>
+                                    <b id="peso-display">82,4 kg</b>
+                                    <span>- 3,6 kg eliminados</span>
+                                    <div
+                                      class="bg-surface-container rounded-xl p-3.5 flex flex-col justify-between border border-white/5">
+                                      <div class="flex items-center justify-between">
+                                        <span class="text-[10px] uppercase text-secondary font-bold font-display">Dieta
+                                          IA</span>
+                                        <span
+                                          class="material-symbols-outlined text-[16px] text-primary">restaurant</span>
+                                      </div>
+                                      <div class="my-1.5">
+                                        <span class="font-display font-extrabold text-xl text-white">26</span>
+                                        <span class="text-xs text-secondary">/ 30 dias</span>
+                                      </div>
+                                      <span class="text-[10px] text-primary font-bold">86% aderência</span>
+                                    </div>
+
+                                    <div
+                                      class="bg-surface-container rounded-xl p-3.5 flex flex-col justify-between border border-white/5">
+                                      <div class="flex items-center justify-between">
+                                        <span class="text-[10px] uppercase text-secondary font-bold font-display">Força
+                                          Pura</span>
+                                        <span
+                                          class="material-symbols-outlined text-[16px] text-primary-container">bolt</span>
+                                      </div>
+                                      <div class="my-1.5">
+                                        <span class="font-display font-extrabold text-xl text-white">+12%</span>
+                                      </div>
+                                      <span class="text-[10px] text-primary font-bold flex items-center gap-0.5">
+                                        <span class="material-symbols-outlined text-[12px]">arrow_upward</span> Carga
+                                        total
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="metrica-card">
+                                    <small>% Gordura Est.</small>
+                                    <b>16,8%</b>
+                                    <span>- 2,4% de taxa</span>
+
+                                    <!-- Conquistas Batidas -->
+                                    <div
+                                      class="bg-surface-container-low rounded-xl p-3.5 space-y-2.5 border border-white/5">
+                                      <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-1.5">
+                                          <span class="material-symbols-outlined text-primary-container text-[18px]"
+                                            style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                                          <h2
+                                            class="font-display font-bold text-xs text-white uppercase tracking-wider">
+                                            Conquistas Batidas</h2>
+                                        </div>
+                                        <span class="text-[10px] text-primary font-extrabold uppercase">3 Novas</span>
+                                      </div>
+
+                                      <div class="space-y-2">
+                                        <div
+                                          class="flex items-center gap-3 p-2.5 bg-surface-container rounded-lg border border-white/5">
+                                          <div
+                                            class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container">
+                                            <span class="material-symbols-outlined text-[20px]">shield</span>
+                                          </div>
+                                          <div class="flex-1 min-w-0">
+                                            <div class="flex items-center justify-between">
+                                              <span class="text-xs font-bold text-white">Foco de Titânio</span>
+                                              <span class="text-[10px] text-primary font-bold">15 Treinos</span>
+                                            </div>
+                                            <p class="text-[10px] text-secondary truncate">15 dias consecutivos de
+                                              presença no Studio</p>
+                                          </div>
+                                        </div>
+
+                                        <div
+                                          class="flex items-center gap-3 p-2.5 bg-surface-container rounded-lg border border-white/5">
+                                          <div
+                                            class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container">
+                                            <span class="material-symbols-outlined text-[20px]">trophy</span>
+                                          </div>
+                                          <div class="flex-1 min-w-0">
+                                            <div class="flex items-center justify-between">
+                                              <span class="text-xs font-bold text-white">Recorde Supino</span>
+                                              <span class="text-[10px] text-primary font-bold">94 kg</span>
+                                            </div>
+                                            <p class="text-[10px] text-secondary truncate">+10kg de carga progressiva
+                                              superada</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="metrica-card">
+                                      <small>Treinos este mês</small>
+                                      <b>14 sessões</b>
+                                      <span>93% frequência</span>
+
+                                      <!-- Botão Enviar Relatório WhatsApp -->
+                                      <a href="https://wa.me/5561998196191?text=Ol%C3%A1%20Marco!%20Aqui%20est%C3%A1%20meu%20relat%C3%B3rio%20de%20progresso%20no%20Studio%3A%20Peso%2081.4kg%20(-2.6kg)%2C%20Supino%2094kg%20e%2018%20treinos%20conclu%C3%ADdos!"
+                                        target="_blank"
+                                        class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#ff3344] to-primary-container text-white font-display font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(217,30,42,0.4)] active:scale-95 transition-all text-center">
+                                        <span class="material-symbols-outlined text-[18px]">send</span>
+                                        <span>Enviar Relatório ao Treinador</span>
+                                      </a>
+                                      </section>
+
+                                      <!-- =======================================================================
+           SESSÃO 5: CONFIGURAÇÃO DO PLANO COM IA (ONBOARDING / RECONFIGURAÇÃO)
+           ======================================================================= -->
+                                      <section id="tab-configurar-ia"
+                                        class="tab-pane flex-col w-full px-4 pt-3 space-y-5">
+                                        <!-- Topo da Configuração -->
+                                        <div class="flex items-center justify-between">
+                                          <button type="button" onclick="switchTab('inicio')"
+                                            class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-white hover:bg-surface-container-high transition-colors">
+                                            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                                          </button>
+                                          <span
+                                            class="text-xs font-display font-bold text-primary uppercase tracking-wider">Calibração
+                                            Marco IA</span>
+                                          <div
+                                            class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary">
+                                            <span class="material-symbols-outlined text-[18px]">smart_toy</span>
+                                          </div>
+                                        </div>
+                                        <div class="metrica-card">
+                                          <small>Próxima Avaliação</small>
+                                          <b style="font-size: 19px; margin: 8px 0;">28/11</b>
+                                          <span style="color: #FFF;">Agendado</span>
+
+                                          <div>
+                                            <h1 class="font-display font-extrabold text-xl text-white">Configurar Meu
+                                              Treino com IA</h1>
+                                            <p class="text-xs text-secondary mt-1">A IA do Studio calcula seu volume
+                                              semanal, recuperação e carga ideal.</p>
+                                          </div>
+                                        </div>
+
+                                        <!-- Cargas Recordes -->
+                                        <div class="cargas-box">
+                                          <h3>🏆 Recordes Pessoais de Carga (PR)</h3>
+                                          <div class="carga-row">
+                                            <span>Supino Reto com Barra</span>
+                                            <b>74 kg (total)</b>
+                                            <!-- Pergunta 1: Objetivo Principal -->
+                                            <div class="space-y-2.5">
+                                              <label
+                                                class="text-xs font-display font-bold uppercase tracking-wider text-white">1.
+                                                Objetivo Principal</label>
+                                              <div class="grid grid-cols-1 gap-2.5" id="goal-options">
+                                                <!-- Opção 1 -->
+                                                <div onclick="selectGoal(this)"
+                                                  class="goal-opt cursor-pointer p-3 rounded-xl bg-surface-container border-2 border-primary-container flex items-center justify-between shadow-[0_0_15px_rgba(217,30,42,0.25)] transition-all">
+                                                  <div class="flex items-center gap-3">
+                                                    <div
+                                                      class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+                                                      <span
+                                                        class="material-symbols-outlined text-[20px]">fitness_center</span>
+                                                    </div>
+                                                    <div>
+                                                      <h4 class="font-display font-bold text-xs text-white">Ganhar Massa
+                                                        &amp; Força</h4>
+                                                      <p class="text-[11px] text-secondary">Hipertrofia muscular e
+                                                        sobrecarga progressiva</p>
+                                                    </div>
+                                                  </div>
+                                                  <span
+                                                    class="material-symbols-outlined text-primary-container text-[20px] font-bold">check_circle</span>
+                                                </div>
+
+                                                <!-- Opção 2 -->
+                                                <div onclick="selectGoal(this)"
+                                                  class="goal-opt cursor-pointer p-3 rounded-xl bg-surface-container-low border border-white/5 flex items-center justify-between hover:bg-surface-container transition-all">
+                                                  <div class="flex items-center gap-3">
+                                                    <div
+                                                      class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+                                                      <span
+                                                        class="material-symbols-outlined text-[20px]">local_fire_department</span>
+                                                    </div>
+                                                    <div>
+                                                      <h4 class="font-display font-bold text-xs text-white">
+                                                        Emagrecimento &amp; Queima</h4>
+                                                      <p class="text-[11px] text-secondary">Definição muscular acelerada
+                                                        e condicionamento</p>
+                                                    </div>
+                                                  </div>
+                                                  <span
+                                                    class="material-symbols-outlined text-secondary text-[20px]">radio_button_unchecked</span>
+                                                </div>
+
+                                                <!-- Opção 3 -->
+                                                <div onclick="selectGoal(this)"
+                                                  class="goal-opt cursor-pointer p-3 rounded-xl bg-surface-container-low border border-white/5 flex items-center justify-between hover:bg-surface-container transition-all">
+                                                  <div class="flex items-center gap-3">
+                                                    <div
+                                                      class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+                                                      <span
+                                                        class="material-symbols-outlined text-[20px]">favorite</span>
+                                                    </div>
+                                                    <div>
+                                                      <h4 class="font-display font-bold text-xs text-white">Saúde &amp;
+                                                        Longevidade 60+</h4>
+                                                      <p class="text-[11px] text-secondary">Mobilidade, postura e
+                                                        qualidade de vida</p>
+                                                    </div>
+                                                  </div>
+                                                  <span
+                                                    class="material-symbols-outlined text-secondary text-[20px]">radio_button_unchecked</span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="carga-row">
+                                              <span>Agachamento Livre</span>
+                                              <b>90 kg (total)</b>
+
+                                              <!-- Pergunta 2: Nível de Atividade (Slider Dinâmico) -->
+                                              <div
+                                                class="p-3.5 rounded-xl bg-surface-container-low border border-white/5 space-y-3">
+                                                <div class="flex items-center justify-between">
+                                                  <label
+                                                    class="text-xs font-display font-bold uppercase tracking-wider text-white">2.
+                                                    Nível de Atividade</label>
+                                                  <span id="slider-level-badge"
+                                                    class="px-2 py-0.5 rounded bg-primary-container/20 text-primary font-display font-bold text-[10px] uppercase">
+                                                    Moderado
+                                                  </span>
+                                                </div>
+
+                                                <input type="range" min="0" max="3" value="2" step="1"
+                                                  id="activity-slider" oninput="updateActivityLevel(this.value)"
+                                                  class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-[#d91e2a]" />
+
+                                                <div
+                                                  class="grid grid-cols-4 text-center text-[10px] text-secondary font-display font-semibold">
+                                                  <span class="text-left">Iniciante</span>
+                                                  <span>Leve</span>
+                                                  <span class="text-primary font-bold">Moderado</span>
+                                                  <span class="text-right">Atleta</span>
+                                                </div>
+                                              </div>
+                                              <div class="carga-row">
+                                                <span>Puxada Alta (Costas)</span>
+                                                <b>65 kg</b>
+                                              </div>
+                                              <div class="carga-row">
+                                                <span>Leg Press 45°</span>
+                                                <b>180 kg</b>
+                                              </div>
+                                            </div>
+
+                                            <!-- Registro Rápido -->
+                                            <div
+                                              style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px;">
+                                              <h4
+                                                style="font-size: 14px; margin-bottom: 10px; font-family: 'Montserrat', sans-serif;">
+                                                Registrar Novo Peso</h4>
+                                              <div style="display: flex; gap: 8px;">
+                                                <input type="number" step="0.1" placeholder="Ex: 82.0" id="input-peso"
+                                                  style="flex: 1; background: #0A0A0A; border: 1px solid var(--border); padding: 10px 14px; border-radius: 8px; color: #FFF; font-size: 14px;">
+                                                <button onclick="salvarPeso()"
+                                                  style="background: var(--primary); color: #FFF; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; cursor: pointer;">Salvar</button>
+                                                <!-- Pergunta 3: Restrições & Preferências Nutricionais -->
+                                                <div class="space-y-2">
+                                                  <label
+                                                    class="text-xs font-display font-bold uppercase tracking-wider text-white">3.
+                                                    Preferências Nutricionais</label>
+                                                  <div class="flex flex-wrap gap-2" id="nutrition-tags">
+                                                    <button type="button" onclick="toggleTag(this)"
+                                                      class="px-3 py-1.5 rounded-full text-xs font-medium bg-primary-container text-white border border-primary-container shadow-sm">
+                                                      Sem Glúten
+                                                    </button>
+                                                    <button type="button" onclick="toggleTag(this)"
+                                                      class="px-3 py-1.5 rounded-full text-xs font-medium bg-primary-container text-white border border-primary-container shadow-sm">
+                                                      Sem Lactose
+                                                    </button>
+                                                    <button type="button" onclick="toggleTag(this)"
+                                                      class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container text-secondary border border-white/5">
+                                                      Low Carb
+                                                    </button>
+                                                    <button type="button" onclick="toggleTag(this)"
+                                                      class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container text-secondary border border-white/5">
+                                                      Vegano
+                                                    </button>
+                                                    <button type="button" onclick="toggleTag(this)"
+                                                      class="px-3 py-1.5 rounded-full text-xs font-medium bg-surface-container text-secondary border border-white/5">
+                                                      Jejum Intermitente
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <!-- ========================================== -->
+                                            <!-- ABA 4: CONTATO / MARCO                     -->
+                                            <!-- ========================================== -->
+                                            <div class="tab-content" id="tab-contato">
+                                              <div class="section-header">
+                                                <h2>Meu Treinador</h2>
+                                                <p>Acompanhamento e suporte direto com Marco Lopes.</p>
+                                              </div>
+                                              <!-- Botão Gerar Plano IA -->
+                                              <button type="button" onclick="generatePlanWithAI()" id="btn-generate-ai"
+                                                class="w-full py-4 px-4 rounded-xl bg-gradient-to-r from-[#ff3344] via-primary-container to-[#b3141f] text-white font-display font-extrabold text-sm uppercase tracking-wider shadow-[0_4px_24px_rgba(217,30,42,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2">
+                                                <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+                                                <span>Gerar Meu Plano Inteligente</span>
+                                              </button>
+                                      </section>
+
+                                      <div class="treinador-card">
+                                        <div class="treinador-avatar">🏋️‍♂️</div>
+                                        <h3>Marco Lopes</h3>
+                                        <small>CREF 014194/GO</small>
+                                        <p>
+                                          Studio Marco Lopes Premium<br>
+                                          R. E - Parque da Colina, Formosa - GO<br>
+                                          Atendimento individual ou até 4 pessoas.
+                                        </p>
+                                        <a href="https://wa.me/5561998196191?text=Ol%C3%A1%2C%20Marco!%20Sou%20aluno%20do%20Studio%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20meu%20treino."
+                                          target="_blank" class="btn-zap-treinador">
+                                          Falar no WhatsApp
+                                        </a>
+                                      </div>
+    </main>
+
+    <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px;">
+      <h4 style="font-size: 15px; margin-bottom: 10px; color: #FFF; font-family: 'Montserrat', sans-serif;">Dúvidas
+        frequentes do aluno</h4>
+      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px;">
+        • Sentiu qualquer desconforto articular? Avise o Marco imediatamente.<br>
+        • Vai precisar repor horário na semana? Comunique com 4h de antecedência.<br>
+        • Atualize seu peso semanalmente para ajuste de carga.
+      </p>
+      <!-- =========================================================================
+         BOTTOM NAVIGATION BAR FIXA (4 ABAS PRINCIPAIS)
+         ========================================================================= -->
+      <nav
+        class="fixed bottom-0 w-full max-w-[440px] z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-2xl border-t border-white/5 shadow-[0_-4px_24px_rgba(0,0,0,0.7)]">
+        <div class="grid grid-cols-4 items-center h-16 px-1">
+          <!-- Aba 1: Início -->
+          <button type="button" onclick="switchTab('inicio')" id="nav-btn-inicio"
+            class="nav-item flex flex-col items-center justify-center gap-0.5 text-primary font-bold transition-all">
+            <span class="material-symbols-outlined text-[24px]"
+              style="font-variation-settings: 'FILL' 1;">grid_view</span>
+            <span class="font-display text-[10px] tracking-tight">Início</span>
+          </button>
+
+          <!-- Aba 2: Meu Plano -->
+          <button type="button" onclick="switchTab('meu-plano')" id="nav-btn-meu-plano"
+            class="nav-item flex flex-col items-center justify-center gap-0.5 text-secondary hover:text-white transition-all">
+            <span class="material-symbols-outlined text-[24px]">psychology</span>
+            <span class="font-display text-[10px] tracking-tight">Meu Plano</span>
+          </button>
+
+          <!-- Aba 3: Treino Ativo -->
+          <button type="button" onclick="switchTab('treino-ativo')" id="nav-btn-treino-ativo"
+            class="nav-item flex flex-col items-center justify-center gap-0.5 text-secondary hover:text-white transition-all relative">
+            <span class="material-symbols-outlined text-[24px]">fitness_center</span>
+            <span class="font-display text-[10px] tracking-tight">Treino</span>
+            <span class="absolute top-2 right-6 w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>
+          </button>
+
+          <!-- Aba 4: Progresso -->
+          <button type="button" onclick="switchTab('progresso')" id="nav-btn-progresso"
+            class="nav-item flex flex-col items-center justify-center gap-0.5 text-secondary hover:text-white transition-all">
+            <span class="material-symbols-outlined text-[24px]">monitoring</span>
+            <span class="font-display text-[10px] tracking-tight">Progresso</span>
+          </button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- BOTTOM NAVIGATION (BARRA INFERIOR)         -->
+    <!-- ========================================== -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" onclick="mudarAba('treinos', this)">
+        <span class="icon">🏋️</span>
+        <span>Treinos</span>
+      </button>
+      <button class="nav-btn" onclick="mudarAba('nutricao', this)">
+        <span class="icon">🥗</span>
+        <span>Dietas</span>
+      </button>
+      <button class="nav-btn" onclick="mudarAba('evolucao', this)">
+        <span class="icon">📈</span>
+        <span>Evolução</span>
+      </button>
+      <button class="nav-btn" onclick="mudarAba('contato', this)">
+        <span class="icon">👤</span>
+        <span>Treinador</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- =========================================================================
+       JAVASCRIPT FUNCIONAL DE NAVEGAÇÃO, TIMER E INTERAÇÃO DO ALUNO
+       ========================================================================= -->
+  <script>
+    // Navegação de Abas
+    function mudarAba(abaId, btn) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + abaId).classList.add('active');
+      btn.classList.add('active');
+    }
+    // 1. Navegação entre abas
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => {
+        el.classList.remove('active');
+      });
+      const activeEl = document.getElementById('tab-' + tabId);
+      if (activeEl) {
+        activeEl.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Marcação de Exercício e Barra de Progresso
+      function toggleExercicio(card) {
+        card.classList.toggle('concluido');
+        atualizarProgresso();
+      }
+      // Atualizar Bottom Nav
+      document.querySelectorAll('.nav-item').forEach(btn => {
+        btn.classList.remove('text-primary', 'font-bold');
+        btn.classList.add('text-secondary');
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+      });
+
+      function atualizarProgresso() {
+        const cards = document.querySelectorAll('#lista-exercicios .exercicio-card');
+        const concluidos = document.querySelectorAll('#lista-exercicios .exercicio-card.concluido').length;
+        const total = cards.length;
+        const pct = Math.round((concluidos / total) * 100);
+        document.getElementById('progresso-texto').innerText = `${concluidos} de ${total} concluídos (${pct}%)`;
+        document.getElementById('progresso-fill').style.width = pct + '%';
+        const currentNavBtn = document.getElementById('nav-btn-' + tabId);
+        if (currentNavBtn) {
+          currentNavBtn.classList.remove('text-secondary');
+          currentNavBtn.classList.add('text-primary', 'font-bold');
+          const activeIcon = currentNavBtn.querySelector('.material-symbols-outlined');
+          if (activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
+        }
+      }
+
+      // Seletor de Ficha de Treino
+      const treinosData = {
+        'A': [
+          { nome: '1. Supino Reto com Barra', series: '4x10', carga: '32 kg/lado', descanso: '60s' },
+          { nome: '2. Supino Inclinado com Halteres', series: '3x12', carga: '22 kg/halter', descanso: '60s' },
+          { nome: '3. Desenvolvimento com Halteres', series: '4x10', carga: '16 kg/halter', descanso: '60s' },
+          { nome: '4. Tríceps Corda na Polia', series: '3x15', carga: '25 kg', descanso: '45s' }
+        ],
+        'B': [
+          { nome: '1. Puxada Alta Pronada', series: '4x10', carga: '55 kg', descanso: '60s' },
+          { nome: '2. Remada Curvada com Barra', series: '3x12', carga: '25 kg/lado', descanso: '60s' },
+          { nome: '3. Rosca Direta com Barra W', series: '3x10', carga: '12 kg/lado', descanso: '45s' },
+          { nome: '4. Rosca Martelo com Halteres', series: '3x12', carga: '14 kg/halter', descanso: '45s' }
+        ],
+        'C': [
+          { nome: '1. Agachamento Livre', series: '4x10', carga: '35 kg/lado', descanso: '90s' },
+          { nome: '2. Leg Press 45°', series: '4x12', carga: '160 kg', descanso: '75s' },
+          { nome: '3. Cadeira Extensora', series: '3x15', carga: '45 kg', descanso: '45s' },
+          { nome: '4. Panturrilha em Pé', series: '4x15', carga: 'Peso corporal + 20kg', descanso: '30s' }
+        ]
+      };
+      // 2. Cronômetro de Descanso Ativo (Treino Ativo)
+      let restSeconds = 45;
+      let totalRestSeconds = 45;
+      let timerRunning = true;
+      let timerInterval = null;
+
+      function selecionarFicha(letra) {
+        document.querySelectorAll('.ficha-btn').forEach(b => b.classList.remove('active'));
+        event.target.classList.add('active');
+        const dados = treinosData[letra];
+        const lista = document.getElementById('lista-exercicios');
+        lista.innerHTML = '';
+        dados.forEach(ex => {
+          lista.innerHTML += `
+          <div class="exercicio-card" onclick="toggleExercicio(this)">
+            <div class="exercicio-info">
+              <h3>${ex.nome}</h3>
+              <div class="exercicio-detalhes">
+                <span>Séries: <b>${ex.series}</b></span>
+                <span>Carga: <b>${ex.carga}</b></span>
+                <span>Descanso: <b>${ex.descanso}</b></span>
+              </div>
+            </div>
+            <div class="check-btn">✓</div>
+          </div>
+        `;
+        });
+        atualizarProgresso();
+        const timerText = document.getElementById('timer-text');
+        const timerSvgCircle = document.getElementById('timer-svg-circle');
+        const timerToggleIcon = document.getElementById('timer-toggle-icon');
+        const circumference = 2 * Math.PI * 80; // ~502.65
+
+        function updateTimerDisplay() {
+          const mins = Math.floor(restSeconds / 60);
+          const secs = restSeconds % 60;
+          if (timerText) {
+            timerText.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+          }
+          if (timerSvgCircle) {
+            const fraction = restSeconds / totalRestSeconds;
+            const offset = circumference * (1 - fraction);
+            timerSvgCircle.style.strokeDashoffset = offset;
+          }
+        }
+
+        // Timer de Descanso
+        let timerInterval = null;
+        function iniciarTimer(segundos) {
+          function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            let s = segundos;
+            const display = document.getElementById('timer-val');
+            timerRunning = true;
+            if (timerToggleIcon) timerToggleIcon.textContent = 'pause';
+            timerInterval = setInterval(() => {
+              s--;
+              const min = String(Math.floor(s / 60)).padStart(2, '0');
+              const seg = String(s % 60).padStart(2, '0');
+              display.innerText = `${min}:${seg}`;
+              if (s <= 0) {
+                if (restSeconds > 0) {
+                  restSeconds--;
+                  updateTimerDisplay();
+                } else {
+                  clearInterval(timerInterval);
+                  display.innerText = "PRONTO!";
+                  timerRunning = false;
+                  if (timerToggleIcon) timerToggleIcon.textContent = 'play_arrow';
+                  // Vibração tátil no celular se suportado
+                  if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+                }
+              }, 1000);
+          }
+
+          // Meta de Água
+          let aguaTotal = 1500;
+          function adicionarAgua() {
+            aguaTotal += 250;
+            document.getElementById('agua-atual').innerText = aguaTotal.toLocaleString('pt-BR');
+            function toggleTimer() {
+              if (timerRunning) {
+                clearInterval(timerInterval);
+                timerRunning = false;
+                if (timerToggleIcon) timerToggleIcon.textContent = 'play_arrow';
+              } else {
+                if (restSeconds === 0) restSeconds = 45;
+                startTimer();
+              }
+            }
+
+            // Salvar Peso
+            function salvarPeso() {
+              const input = document.getElementById('input-peso');
+              if (input.value) {
+                document.getElementById('peso-display').innerText = parseFloat(input.value).toFixed(1).replace('.', ',') + ' kg';
+                alert('Novo peso registrado com sucesso!');
+                input.value = '';
+                function adjustTimer(delta) {
+                  restSeconds = Math.max(0, restSeconds + delta);
+                  totalRestSeconds = Math.max(restSeconds, totalRestSeconds);
+                  updateTimerDisplay();
+                }
+
+                function skipTimer() {
+                  restSeconds = 0;
+                  updateTimerDisplay();
+                  if (timerInterval) clearInterval(timerInterval);
+                  timerRunning = false;
+                  if (timerToggleIcon) timerToggleIcon.textContent = 'play_arrow';
+                }
+
+                // Iniciar timer na carga e checar hash de URL
+                window.addEventListener('DOMContentLoaded', () => {
+                  const hash = window.location.hash.replace('#', '');
+                  if (hash && ['inicio', 'meu-plano', 'treino-ativo', 'progresso', 'configurar-ia'].includes(hash)) {
+                    switchTab(hash);
+                  }
+                });
+
+                updateTimerDisplay();
+                startTimer();
+
+                // 3. Checklist de Séries
+                function completeSet(setNum) {
+                  const setRow = document.getElementById('set-row-' + setNum);
+                  if (setRow) {
+                    setRow.classList.remove('bg-surface-container', 'border-primary-container/40');
+                    setRow.classList.add('bg-surface-container-low', 'border-white/5');
+                    setRow.innerHTML = `
+          <div class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center text-white shadow-sm">
+              <span class="material-symbols-outlined text-[16px] font-bold">check</span>
+            </div>
+            <div>
+              <span class="font-display font-bold text-xs text-white">Série ${setNum} (Concluída)</span>
+              <span class="text-xs text-secondary ml-1 font-medium">8 reps • 90 kg</span>
+            </div>
+          </div>
+          <span class="text-[10px] text-green-400 font-display font-bold bg-green-500/10 px-2 py-0.5 rounded">RPE 8.5</span>
+        `;
+                  }
+                  const countEl = document.getElementById('completed-sets-count');
+                  if (countEl) countEl.textContent = '3';
+
+                  // Dispara 45 segundos de descanso
+                  restSeconds = 45;
+                  totalRestSeconds = 45;
+                  startTimer();
+                }
+
+                function finishWorkoutModal() {
+                  alert('🎉 Parabéns Carlos!\nTreino concluído com 420 kcal gastas e sobrecarga de 94kg registrada.\nO relatório foi sincronizado com o Marco Lopes Personal!');
+                  switchTab('progresso');
+                }
+
+                // 4. Seleção de Objetivo em Configurar IA
+                function selectGoal(element) {
+                  document.querySelectorAll('.goal-opt').forEach(opt => {
+                    opt.className = 'goal-opt cursor-pointer p-3 rounded-xl bg-surface-container-low border border-white/5 flex items-center justify-between hover:bg-surface-container transition-all';
+                    const icon = opt.querySelector('.material-symbols-outlined:last-child');
+                    if (icon) {
+                      icon.textContent = 'radio_button_unchecked';
+                      icon.className = 'material-symbols-outlined text-secondary text-[20px]';
+                    }
+                  });
+                  element.className = 'goal-opt cursor-pointer p-3 rounded-xl bg-surface-container border-2 border-primary-container flex items-center justify-between shadow-[0_0_15px_rgba(217,30,42,0.25)] transition-all';
+                  const activeIcon = element.querySelector('.material-symbols-outlined:last-child');
+                  if (activeIcon) {
+                    activeIcon.textContent = 'check_circle';
+                    activeIcon.className = 'material-symbols-outlined text-primary-container text-[20px] font-bold';
+                  }
+                }
+
+                function updateActivityLevel(val) {
+                  const levels = ['Iniciante', 'Leve', 'Moderado', 'Atleta'];
+                  const badge = document.getElementById('slider-level-badge');
+                  if (badge) badge.textContent = levels[val] || 'Moderado';
+                }
+
+                function toggleTag(btn) {
+                  if (btn.classList.contains('bg-primary-container')) {
+                    btn.classList.remove('bg-primary-container', 'text-white', 'border-primary-container');
+                    btn.classList.add('bg-surface-container', 'text-secondary', 'border-white/5');
+                  } else {
+                    btn.classList.remove('bg-surface-container', 'text-secondary', 'border-white/5');
+                    btn.classList.add('bg-primary-container', 'text-white', 'border-primary-container');
+                  }
+                }
+
+                function generatePlanWithAI() {
+                  const btn = document.getElementById('btn-generate-ai');
+                  if (btn) {
+                    btn.innerHTML = `<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Processando Biometria com IA...</span>`;
+                  }
+                  setTimeout(() => {
+                    if (btn) {
+                      btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">auto_awesome</span><span>Gerar Meu Plano Inteligente</span>`;
+                    }
+                    alert('Plano atualizado com sucesso pela IA do Studio Marco Lopes!');
+                    switchTab('meu-plano');
+                  }, 1200);
+                }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+# Sistema operacional e temporários
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+node_modules/
+.env
+.env.*
+!.env.example

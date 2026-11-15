@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700;800;900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-high": "#2a2a2a", "on-tertiary": "#68000f", "primary-container": "#d91e2a", "surface": "#131313", "on-error": "#690005", "on-secondary": "#2f3131", "on-primary-container": "#fff0ee", "outline-variant": "#5c3f3d", "on-background": "#e5e2e1", "secondary-fixed": "#e3e2e2", "on-surface": "#e5e2e1", "secondary-container": "#484949", "inverse-on-surface": "#313030", "surface-bright": "#3a3939", "primary-fixed-dim": "#ffb3ad", "on-tertiary-fixed": "#410006", "primary": "#ffb3ad", "error-container": "#93000a", "surface-container-low": "#1c1b1b", "on-secondary-container": "#b8b8b8", "background": "#131313", "tertiary-fixed": "#ffdad8", "on-tertiary-container": "#fff0ef", "surface-dim": "#131313", "tertiary-fixed-dim": "#ffb3b0", "outline": "#ad8885", "secondary-fixed-dim": "#c7c6c6", "inverse-surface": "#e5e2e1", "surface-tint": "#ffb3ad", "error": "#ffb4ab", "secondary": "#c7c6c6", "surface-container": "#201f1f", "on-primary-fixed-variant": "#930013", "tertiary": "#ffb3b0", "inverse-primary": "#c0001c", "surface-variant": "#353534", "on-tertiary-fixed-variant": "#93001a", "on-primary": "#68000a", "tertiary-container": "#dc1130", "on-error-container": "#ffdad6", "on-secondary-fixed": "#1a1c1c", "surface-container-lowest": "#0e0e0e", "primary-fixed": "#ffdad7", "on-primary-fixed": "#410004", "on-surface-variant": "#e6bdb9", "on-secondary-fixed-variant": "#464747", "surface-container-highest": "#353534" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "space-sm": "0.5rem", "space-xl": "2rem", "space-lg": "1.5rem", "margin": "1rem", "gutter": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "display-lg": ["Montserrat"], "headline-md": ["Montserrat"], "label-sm": ["Montserrat"], "body-lg": ["Inter"], "headline-lg": ["Montserrat"], "timer-display": ["Montserrat"], "body-md": ["Inter"], "display-sm": ["Montserrat"], "label-lg": ["Montserrat"], "label-md": ["Montserrat"], "body-sm": ["Inter"], "headline-sm": ["Montserrat"] }, "fontSize": { "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "900" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "headline-lg": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "800" }], "timer-display": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "display-sm": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["16px", { "lineHeight": "24px", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#131313;color:#e5e2e1;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,16px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface uppercase">Studio Marco Lopes</span><span class="px-1.5 py-0.5 rounded bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase tracking-wider">IA</span></div><div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high/60"><span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-sm text-label-sm text-primary uppercase">Online</span></div></div><div class="flex items-center gap-space-sm"><button aria-label="Notificações" class="relative w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-low text-secondary hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(217,30,42,0.8)]"></span></button><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrDULulw6oXRvGWZ9h5MfsNxGtW0_lpsUx6vHeR7SqBUPdNHu1qM7VzOisSETJf1bMG8pM2Vyi0FOu6L2MeBvXBKYrxEaL7OmriMXoLC6Hf4ZQeoDCKevTyRMWoi4NYrhv8aYwnV3SE3oBTEYdaHg_WmvOs8LLycyBTw_l4C8dp9QaCp58bVtUF0VIlYRNu0noBJy14N3-qJLQXDOO77E7WoRc7gUC1Qqu7m6DdoCGzKRFb5yBPuMxNSUYg"/><span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-primary-container"></span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Content Container -->
+<div class="px-margin flex flex-col gap-space-lg pb-10">
+<!-- IA Success Header & Meta Badge -->
+<div class="flex flex-col gap-space-xs">
+<div class="inline-flex items-center gap-1.5 self-start px-3 py-1 rounded-full bg-primary-container/15 text-primary text-label-sm font-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+        Plano 100% Personalizado por IA
+      </div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-1">
+        Roteiro Semanal: Força &amp; Definição
+      </h1>
+<div class="flex flex-wrap items-center gap-2 mt-1">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-secondary text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-[15px] text-primary">calendar_today</span>
+          8 Semanas
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-secondary text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-[15px] text-primary">speed</span>
+          Intermediário
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-secondary text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-[15px] text-primary">local_fire_department</span>
+          2.350 kcal/dia
+        </span>
+</div>
+</div>
+<!-- AI Intensity Pulse Tracker -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="flex items-center gap-1.5 text-on-surface font-label-md">
+<span class="material-symbols-outlined text-[16px] text-primary-container">bolt</span>
+          Intensidade Semanal
+        </span>
+<span class="text-primary font-label-sm uppercase tracking-wider">8/10 • Recuperação Otimizada</span>
+</div>
+<!-- Progress Bar Graphic -->
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden flex">
+<div class="h-full bg-gradient-to-r from-primary-container via-tertiary-container to-primary rounded-full transition-all duration-500" style="width: 80%;"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-secondary-container text-[11px] pt-0.5">
+<span>Fase de Carga Progressiva</span>
+<span>Sono estimado: 7h 45m</span>
+</div>
+</div>
+<!-- Days of the Week Selector (Interactive Tabs) -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">Programação</span>
+<span class="text-secondary text-body-sm font-body-sm">Semana 1 de 8</span>
+</div>
+<!-- Horizontal scrolling track -->
+<div class="flex gap-2 overflow-x-auto pb-1 pt-0.5 no-scrollbar">
+<!-- Seg (Active) -->
+<button class="day-tab flex flex-col items-center justify-center min-w-[58px] py-2.5 px-2 rounded-xl bg-primary-container text-on-primary-container shadow-[0_0_16px_rgba(217,30,42,0.45)] transition-all" type="button">
+<span class="text-label-sm font-label-sm uppercase tracking-wider opacity-90">Hoje</span>
+<span class="text-headline-sm font-headline-sm">Seg</span>
+<span class="w-1.5 h-1.5 rounded-full bg-white mt-1"></span>
+</button>
+<!-- Ter -->
+<button class="day-tab flex flex-col items-center justify-center min-w-[58px] py-2.5 px-2 rounded-xl bg-surface-container text-secondary hover:text-on-surface transition-all" type="button">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-secondary">Dia 02</span>
+<span class="text-headline-sm font-headline-sm text-on-surface">Ter</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container/40 mt-1"></span>
+</button>
+<!-- Qua -->
+<button class="day-tab flex flex-col items-center justify-center min-w-[58px] py-2.5 px-2 rounded-xl bg-surface-container text-secondary hover:text-on-surface transition-all" type="button">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-secondary">Dia 03</span>
+<span class="text-headline-sm font-headline-sm text-on-surface">Qua</span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-high mt-1"></span>
+</button>
+<!-- Qui -->
+<button class="day-tab flex flex-col items-center justify-center min-w-[58px] py-2.5 px-2 rounded-xl bg-surface-container text-secondary hover:text-on-surface transition-all" type="button">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-secondary">Dia 04</span>
+<span class="text-headline-sm font-headline-sm text-on-surface">Qui</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container/40 mt-1"></span>
+</button>
+<!-- Sex -->
+<button class="day-tab flex flex-col items-center justify-center min-w-[58px] py-2.5 px-2 rounded-xl bg-surface-container text-secondary hover:text-on-surface transition-all" type="button">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-secondary">Dia 05</span>
+<span class="text-headline-sm font-headline-sm text-on-surface">Sex</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container/40 mt-1"></span>
+</button>
+<!-- Sab -->
+<button class="day-tab flex flex-col items-center justify-center min-w-[58px] py-2.5 px-2 rounded-xl bg-surface-container text-secondary hover:text-on-surface transition-all" type="button">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-secondary">Descanso</span>
+<span class="text-headline-sm font-headline-sm text-on-surface">Sáb</span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-high mt-1"></span>
+</button>
+<!-- Dom -->
+<button class="day-tab flex flex-col items-center justify-center min-w-[58px] py-2.5 px-2 rounded-xl bg-surface-container text-secondary hover:text-on-surface transition-all" type="button">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-secondary">Recup</span>
+<span class="text-headline-sm font-headline-sm text-on-surface">Dom</span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-high mt-1"></span>
+</button>
+</div>
+</div>
+<!-- AI Coaching Alert Box -->
+<div class="p-4 rounded-xl bg-surface-container-low flex items-start gap-3 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<div class="flex flex-col gap-0.5 min-w-0">
+<span class="text-label-sm font-label-sm text-primary uppercase tracking-wider">Orientação Diária Marco IA</span>
+<p class="text-body-sm font-body-sm text-secondary leading-snug">
+          Lembre-se de manter hidratação mínima de <strong class="text-on-surface font-semibold">3.0 Litros</strong> hoje devido ao volume muscular e intensidade da sessão superior.
+        </p>
+</div>
+</div>
+<!-- CARD 1: Treino do Dia -->
+<div class="rounded-2xl bg-surface-container p-space-md flex flex-col gap-4 shadow-lg">
+<!-- Card Top: Header & Hero Thumbnail -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">fitness_center</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-primary uppercase tracking-wider">Treino de Hoje</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Força Superior &amp; Peitoral</h2>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary-container text-on-primary-container text-label-sm font-label-sm uppercase tracking-wider shadow-[0_0_10px_rgba(217,30,42,0.4)]">
+          Ativo
+        </span>
+</div>
+<!-- Workout Visual & Badges -->
+<div class="relative w-full h-44 rounded-xl overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Athletic muscular bodybuilder executing heavy barbell bench press in dark moody cybernetic gym with high-contrast red neon accents, deep shadows, cinematic lighting, ultra-realistic athletic physique, silver and chrome highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPxIxqZVu63eODrWsaGqJWaKYr-ppg9diWnsv4k5Kuadi_b3lMzX3b1xLZ_327--1bK3Pu7zK2YEJwiZWYheD9Td6FiyOcGR5LFsQrpBGjFEmOcPUqoK6ker9fY7Q0Ii5e0-rpYRCzOlc4cYm_Bgq3c-5GEUfFssl7iJ7FLZ6lllvgbcE3uomSAn47Vw4OQGBzhwwf4Z0LRIjatsGS5RydThgg3Il8ngHP7Ux1T0c"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<!-- Floating Workout Stats on Thumbnail -->
+<div class="absolute bottom-3 left-3 right-3 flex flex-wrap items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container-lowest/85 backdrop-blur-md text-on-surface text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">timer</span>
+            45 min
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container-lowest/85 backdrop-blur-md text-on-surface text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">local_fire_department</span>
+            420 kcal
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container-lowest/85 backdrop-blur-md text-on-surface text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">format_list_bulleted</span>
+            6 exercícios
+          </span>
+</div>
+</div>
+<!-- Exercise Quick-List -->
+<div class="flex flex-col gap-2 pt-1">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Principais Movimentos</span>
+<div class="space-y-2">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-md bg-surface-container-high flex items-center justify-center text-primary font-headline-sm text-[12px]">1</span>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-semibold">Supino Reto com Barra</p>
+<p class="text-body-sm font-body-sm text-secondary">4 séries × 8-10 reps • Carga progressiva</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">chevron_right</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-md bg-surface-container-high flex items-center justify-center text-primary font-headline-sm text-[12px]">2</span>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-semibold">Supino Inclinado com Halteres</p>
+<p class="text-body-sm font-body-sm text-secondary">4 séries × 10 reps • Pausa 60s</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">chevron_right</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-md bg-surface-container-high flex items-center justify-center text-primary font-headline-sm text-[12px]">3</span>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-semibold">Crossover no Cabo Polia Média</p>
+<p class="text-body-sm font-body-sm text-secondary">3 séries × 12 reps • Foco em pico de contração</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">chevron_right</span>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-md bg-surface-container-high flex items-center justify-center text-primary font-headline-sm text-[12px]">4</span>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-semibold">Tríceps Corda no Pulley</p>
+<p class="text-body-sm font-body-sm text-secondary">3 séries × 15 reps • Drop-set na última</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Primary Action: Iniciar Treino & Ver Ficha -->
+<div class="flex flex-col gap-2 pt-2">
+<a class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-primary-container to-tertiary-container hover:opacity-95 text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wider text-center flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(217,30,42,0.4)]" href="#">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+          Iniciar Sessão Agora
+        </a>
+<button class="w-full py-2.5 px-4 rounded-xl bg-surface-container-low hover:bg-surface-container-high text-secondary hover:text-on-surface font-label-md text-label-md text-center transition-colors" type="button">
+          Ver Ficha Completa &amp; Variações →
+        </button>
+</div>
+</div>
+<!-- CARD 2: Nutrição & Refeições IA do Dia -->
+<div class="rounded-2xl bg-surface-container p-space-md flex flex-col gap-4 shadow-lg">
+<!-- Nutrition Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">restaurant</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-primary uppercase tracking-wider">Nutrição Preditiva IA</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Plano Alimentar de Segunda</h2>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[22px]">pie_chart</span>
+</div>
+<!-- Macro Tracker Grid -->
+<div class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-body-sm font-body-sm text-on-surface font-bold">Meta Calórica Diária</span>
+<span class="text-primary font-headline-sm text-headline-sm">2.350 <span class="text-body-sm font-normal text-secondary">kcal</span></span>
+</div>
+<div class="grid grid-cols-3 gap-2 pt-1">
+<!-- Protein -->
+<div class="flex flex-col p-2 rounded-lg bg-surface-container-high text-center">
+<span class="text-label-sm font-label-sm text-secondary uppercase">Proteínas</span>
+<span class="text-headline-sm font-headline-sm text-on-surface mt-0.5">170g</span>
+<span class="text-[10px] text-primary font-semibold">29% total</span>
+</div>
+<!-- Carbs -->
+<div class="flex flex-col p-2 rounded-lg bg-surface-container-high text-center">
+<span class="text-label-sm font-label-sm text-secondary uppercase">Carboidratos</span>
+<span class="text-headline-sm font-headline-sm text-on-surface mt-0.5">220g</span>
+<span class="text-[10px] text-secondary font-semibold">46% total</span>
+</div>
+<!-- Fats -->
+<div class="flex flex-col p-2 rounded-lg bg-surface-container-high text-center">
+<span class="text-label-sm font-label-sm text-secondary uppercase">Gorduras</span>
+<span class="text-headline-sm font-headline-sm text-on-surface mt-0.5">65g</span>
+<span class="text-[10px] text-secondary font-semibold">25% total</span>
+</div>
+</div>
+</div>
+<!-- Meal Schedule List -->
+<div class="flex flex-col gap-2.5">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">Cronograma de Refeições</span>
+<!-- Meal 1: Breakfast -->
+<div class="flex gap-3 p-3 rounded-xl bg-surface-container-low items-start">
+<div class="w-14 h-14 rounded-lg bg-surface-container-high shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Healthy nutritious fitness breakfast of fluffy three-egg omelette topped with oats and fresh organic red berries on a sleek dark graphite plate in a luxury minimalist setting with soft rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr4pygJsOc3maGtalTlAAeVXZB9MmnXMe9dTIrH7eavHcBxP9FVNMNBCcuirad4L7DoY_s_SIn1F8o2d47ciBd9MiZZaOyQFrv64ixzdG6S8YgVuBs9feomOUdWO0CZYNxmSlhX-f_pSO3m9pGpY-cFTjg-f5K7yzOSY7xrk9-JuM-up9XJJvcMZpXp52iI56DvsOj_6D9wg_de8f1bh5chEwdTWRQQ-N3BJDzLT8"/>
+</div>
+<div class="flex flex-col gap-0.5 flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-primary uppercase font-bold">07:30 • Café da Manhã</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold">420 kcal</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface font-medium leading-snug">
+              Omelete de 3 ovos inteiros com aveia em flocos e frutas vermelhas frescas.
+            </p>
+</div>
+</div>
+<!-- Meal 2: Lunch -->
+<div class="flex gap-3 p-3 rounded-xl bg-surface-container-low items-start">
+<div class="w-14 h-14 rounded-lg bg-surface-container-high shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Athletic high protein lunch plate featuring grilled lean chicken breast with brown rice and fresh crispy green salad drizzled with extra virgin olive oil, dark aesthetic studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBymIy3ZDaGtPuWF1UdjdgJgMkQ97z7V-JiNE3pSZEse81x3SUB1rX2Gt4hHBwvsdE-82z1kmmPvx5CsgZlxfQ-8jeQ0vdH9NFecrJG3XKcvHRzvXhVI4k6sjI279sD_Wo5miLC3nbxUMs5oja8fDyyj7da3uSuhgyni1R_3widvjxZZD0FRSuy0cQVHFjX4b9J0GQaBUzQ_tQxQlZC5yroN9-_9HVmhJGFXbhxcM8"/>
+</div>
+<div class="flex flex-col gap-0.5 flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-primary uppercase font-bold">12:30 • Almoço Anabólico</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold">650 kcal</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface font-medium leading-snug">
+              180g Peito de frango grelhado, 150g arroz integral e mix de folhas verdes com azeite.
+            </p>
+</div>
+</div>
+<!-- Meal 3: Pre-workout snack -->
+<div class="flex gap-3 p-3 rounded-xl bg-surface-container-low items-start">
+<div class="w-14 h-14 rounded-lg bg-surface-container-high shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Protein shake smoothie in black metal shaker cup beside fresh sliced ripe banana and cinnamon stick, dramatic gym lighting, dark obsidian tabletop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4GAbb3yWq-83yNHNerkhB_s8hpjOS06yXOh0AbyodMQRp30K_3ifKQlF1CZv4k-r4uL2cQLmeJatTdh8huA1Rfekxs7eoSZ1ydL_Uo9SQXWdNNBdk--OEZHELNKm_8W_bc4WEW0DznXhKBdC9GRz7i2mFdllN7a7xQs3_arKugW2Cvt87XPv5WIvuCNsPuBzs7GXJ8V4sRQnM3FOj2w-F2SPaDVYuSQ9rC-prp94"/>
+</div>
+<div class="flex flex-col gap-0.5 flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-primary uppercase font-bold">16:30 • Pré-Treino Ativo</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold">310 kcal</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface font-medium leading-snug">
+              Shake de whey protein isolado com 1 banana prata e canela em pó.
+            </p>
+</div>
+</div>
+<!-- Meal 4: Dinner -->
+<div class="flex gap-3 p-3 rounded-xl bg-surface-container-low items-start">
+<div class="w-14 h-14 rounded-lg bg-surface-container-high shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Gourmet healthy dinner of seared wild salmon fillet with roasted sweet potato wedges and steamed asparagus on elegant matte black ceramic plate, warm culinary highlight lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-uC0ra6M0rRd0Y5BlU5y72tjEXzKwqGzXPlfm6gvUyCm3mJREp8TxCjNanvyz15_VyAcTvYcMzEwwTJOTitwARApc64HZo9YjPMeXUYxYWL_k4Qrs-eiBZbonPsIZXXpdLdcFrVfdhGc8GSBaJkiGUb7g1Q-Vpzc9vHexk-l6Zsbvem7iY2Nzln6fDMBZC5c7vAXO_GZLHiA_6LVCDmnB9pO3CgvDGqHVEi-bQ1Y"/>
+</div>
+<div class="flex flex-col gap-0.5 flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-primary uppercase font-bold">20:30 • Jantar de Recuperação</span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold">580 kcal</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface font-medium leading-snug">
+              Salmão grelhado na crosta de ervas finas com batata doce assada no forno.
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Plan Adjustment Trigger Button -->
+<div class="flex flex-col gap-2 pt-2">
+<button class="w-full py-4 px-5 rounded-2xl bg-surface-container-high hover:bg-surface-bright text-on-surface flex items-center justify-center gap-3 shadow-[0_0_24px_rgba(217,30,42,0.25)] transition-all active:scale-[0.98]" id="btnRefinePlan" style="box-shadow: inset 0 0 0 1.5px #d91e2a, 0 4px 20px rgba(217, 30, 42, 0.25);" type="button">
+<span class="material-symbols-outlined text-primary-container text-[24px]">tune</span>
+<span class="font-headline-sm text-headline-sm uppercase tracking-wider text-on-surface">Refinar Plano com IA</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">auto_fix_high</span>
+</button>
+<p class="text-center text-body-sm font-body-sm text-secondary px-4">
+        Ajuste grupos musculares, troque ingredientes de refeições ou recalibre o nível de cansaço a qualquer momento.
+      </p>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interactions for day tabs switching
+  document.querySelectorAll('.day-tab').forEach((tab) => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.day-tab').forEach((el) => {
+        el.className = 'day-tab flex flex-col items-center justify-center min-w-[58px] py-2.5 px-2 rounded-xl bg-surface-container text-secondary hover:text-on-surface transition-all';
+        const indicator = el.querySelector('span:last-child');
+        if (indicator) indicator.className = 'w-1.5 h-1.5 rounded-full bg-surface-container-high mt-1';
+      });
+      this.className = 'day-tab flex flex-col items-center justify-center min-w-[58px] py-2.5 px-2 rounded-xl bg-primary-container text-on-primary-container shadow-[0_0_16px_rgba(217,30,42,0.45)] transition-all';
+      const activeIndicator = this.querySelector('span:last-child');
+      if (activeIndicator) activeIndicator.className = 'w-1.5 h-1.5 rounded-full bg-white mt-1';
+    });
+  });
+
+  // Haptic feedback simulation for Refine Button
+  const refineBtn = document.getElementById('btnRefinePlan');
+  if (refineBtn) {
+    refineBtn.addEventListener('click', () => {
+      refineBtn.classList.add('brightness-125');
+      setTimeout(() => refineBtn.classList.remove('brightness-125'), 200);
+    });
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-2xl shadow-[0_-4px_24px_rgba(0,0,0,0.6)]" data-active-classes="text-primary-container font-headline-sm drop-shadow-[0_0_12px_rgba(217,30,42,0.45)]"><div class="grid grid-cols-4 items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 min-h-[44px] text-secondary hover:text-on-surface transition-all" data-path="inicio" href="#"><span class="material-symbols-outlined text-[24px]">grid_view</span><span class="font-label-sm text-label-sm tracking-tight">Início</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-h-[44px] transition-all text-primary-container font-headline-sm drop-shadow-[0_0_12px_rgba(217,30,42,0.45)]" data-path="meu-plano" href="#"><span class="material-symbols-outlined text-[24px]">psychology</span><span class="font-label-sm text-label-sm tracking-tight">Meu Plano</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-h-[44px] text-secondary hover:text-on-surface transition-all" data-path="treinos-e-ia" href="#"><span class="material-symbols-outlined text-[24px]">fitness_center</span><span class="font-label-sm text-label-sm tracking-tight">Treinos &amp; IA</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-h-[44px] text-secondary hover:text-on-surface transition-all" data-path="progresso" href="#"><span class="material-symbols-outlined text-[24px]">monitoring</span><span class="font-label-sm text-label-sm tracking-tight">Progresso</span></a></div></nav></body></html>

@@ -1,0 +1,9 @@
+{
+  "name": "studiomarcolopes-aluno",
+  "version": "1.0.0",
+  "private": true,
+  "description": "App do Aluno - Studio Marco Lopes Premium",
+  "scripts": {
+    "build": "echo 'Static app ready for deployment'"
+  }
+}

@@ -64,3 +64,4 @@ Como o app é uma Single Page Application independente em HTML5, Tailwind CSS e 
 - **Endereço:** R. E - Parque da Colina, Formosa - GO, CEP 73808-165
 - **Horário:** Seg a Sex das 06:00 às 21:00
 - **Instagram:** [@marcolopes_personal_trainer](https://instagram.com/marcolopes_personal_trainer)
+

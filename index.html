@@ -161,6 +161,103 @@
 </head>
 
 <body class="bg-[#050505] flex justify-center items-start min-h-screen text-on-surface antialiased selection:bg-primary-container selection:text-white">
+  <!-- ==========================================================================
+       PRISMA DIGITAL · TELA DE HOMOLOGAÇÃO PRIVADA (ACESSO BLOQUEADO)
+       ========================================================================== -->
+  <style id="prisma-lock-style">
+    body:not(.prisma-unlocked) > *:not(#prisma-lock-overlay) {
+      display: none !important;
+    }
+  </style>
+  <script>
+    (function(){
+      var AUTH_KEY = 'prisma_demo_auth_sml';
+      if (localStorage.getItem(AUTH_KEY) === 'granted' || sessionStorage.getItem(AUTH_KEY) === 'granted') {
+        document.documentElement.classList.add('prisma-unlocked');
+      }
+    })();
+  </script>
+
+  <!-- TELA DE BLOQUEIO DE HOMOLOGAÇÃO PRIVADA -->
+  <div id="prisma-lock-overlay" style="position:fixed;inset:0;z-index:99999999;background:#08080a;display:flex;align-items:center;justify-content:center;padding:20px;font-family:'Montserrat',sans-serif;color:#ffffff;overflow-y:auto;">
+    <div style="max-width:500px;width:100%;background:#111215;border:1px solid rgba(57,255,20,0.35);border-radius:24px;padding:40px 32px;text-align:center;box-shadow:0 25px 60px rgba(0,0,0,0.95), 0 0 35px rgba(57,255,20,0.18);position:relative;overflow:hidden;margin:auto;">
+      <div style="position:absolute;top:-100px;right:-100px;width:240px;height:240px;background:radial-gradient(circle,rgba(57,255,20,0.2) 0%,rgba(0,0,0,0) 70%);pointer-events:none;"></div>
+
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.45);color:#39FF14;padding:6px 16px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;">
+        🔒 HOMOLOGAÇÃO PRIVADA
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:22px;">
+        <div style="width:42px;height:42px;background:#39FF14;color:#08080a;border-radius:10px;display:grid;place-items:center;font-weight:900;font-size:22px;box-shadow:0 0 20px rgba(57,255,20,0.5);">▲</div>
+        <div style="text-align:left;">
+          <div style="font-size:18px;font-weight:900;letter-spacing:-0.5px;color:#ffffff;">PRISMA <span style="color:#39FF14;">DIGITAL</span></div>
+          <div style="font-size:10px;color:#9ca3af;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;">Segurança &amp; Homologação</div>
+        </div>
+      </div>
+
+      <h2 style="font-size:22px;font-weight:800;margin-bottom:14px;color:#ffffff;line-height:1.25;">Ambiente de Demonstração Suspenso</h2>
+      <p style="font-family:'Inter',sans-serif;font-size:14px;color:#9ca3af;line-height:1.6;margin-bottom:26px;">
+        Este projeto concluiu o período de demonstração temporária e encontra-se bloqueado para o público externo. Para reativação definitiva no domínio oficial, entre em contato com a equipe da <strong>PRISMA DIGITAL</strong>.
+      </p>
+
+      <a href="https://api.whatsapp.com/send/?phone=5561994277244&text=Ol%C3%A1+Henrique%2C+vi+que+a+demonstra%C3%A7%C3%A3o+do+Studio+Marco+Lopes+foi+suspensa.+Quero+aprovar+a+proposta+para+reativar." target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#39FF14;color:#08080a;font-weight:800;font-size:14.5px;padding:15px 24px;border-radius:999px;text-decoration:none;box-shadow:0 0 25px rgba(57,255,20,0.45);margin-bottom:28px;transition:all 0.2s;">
+        <span>Falar no WhatsApp para Liberar</span>
+        <span style="font-size:18px;">➔</span>
+      </a>
+
+      <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;">
+        <small style="color:#6b7280;font-size:11px;display:block;margin-bottom:10px;">Acesso Restrito / Desenvolvedor:</small>
+        <div style="display:flex;gap:8px;max-width:340px;margin:0 auto;">
+          <input type="password" id="prisma-pin-input" placeholder="Digite o PIN de acesso" style="flex:1;background:#08080a;border:1px solid rgba(255,255,255,0.18);border-radius:8px;padding:9px 12px;color:#ffffff;font-size:12px;outline:none;" onkeypress="if(event.key==='Enter')window.desbloquearPrisma();" />
+          <button type="button" onclick="window.desbloquearPrisma()" style="background:#1e1e1e;color:#39FF14;border:1px solid rgba(57,255,20,0.35);border-radius:8px;padding:9px 16px;font-size:12px;font-weight:700;cursor:pointer;">Entrar</button>
+        </div>
+        <div id="prisma-pin-error" style="color:#ff4d4f;font-size:11px;margin-top:8px;display:none;">PIN incorreto. Acesso restrito.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var AUTH_KEY = 'prisma_demo_auth_sml';
+      var PIN_CORRETO = 'prisma2026';
+      function isAuthed() {
+        return localStorage.getItem(AUTH_KEY) === 'granted' || sessionStorage.getItem(AUTH_KEY) === 'granted';
+      }
+      if (isAuthed()) {
+        document.documentElement.classList.add('prisma-unlocked');
+        if (document.body) document.body.classList.add('prisma-unlocked');
+        var el = document.getElementById('prisma-lock-overlay');
+        if (el) el.remove();
+      } else {
+        document.documentElement.classList.remove('prisma-unlocked');
+        if (document.body) {
+          document.body.classList.remove('prisma-unlocked');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      window.desbloquearPrisma = function() {
+        var input = document.getElementById('prisma-pin-input');
+        var err = document.getElementById('prisma-pin-error');
+        if (!input) return;
+        if (input.value.trim().toLowerCase() === PIN_CORRETO) {
+          localStorage.setItem(AUTH_KEY, 'granted');
+          sessionStorage.setItem(AUTH_KEY, 'granted');
+          document.documentElement.classList.add('prisma-unlocked');
+          if (document.body) {
+            document.body.classList.add('prisma-unlocked');
+            document.body.style.overflow = '';
+          }
+          var el = document.getElementById('prisma-lock-overlay');
+          if (el) el.remove();
+        } else {
+          if (err) err.style.display = 'block';
+          input.value = '';
+          input.focus();
+        }
+      };
+    })();
+  </script>
+
 
   <!-- FRAME DO APLICATIVO MOBILE -->
   <div class="app-frame">
